@@ -1,0 +1,19 @@
+@font-face{
+    font-family: DigitalVibes;
+    src: url(fonts/Cormorant-Light.ttf);
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    height: 100px;
+}
+
+h1{
+    font-family: DigitalVibes;
+}
