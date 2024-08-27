@@ -8,14 +8,6 @@
     src: url(fonts/UnicaOne-Regular.ttf);
 }
 
-.header {
-    background-color: #93C572;
-    width: 100%; /* Make the header stretch the full width */
-    padding: 15px 0; /* Optional: Add some padding for spacing */
-    box-sizing: border-box; /* Include padding in the element's total width */
-    text-align: center; /* Optional: Center text within the header */
-}
-
 body{
     display: flex;
     flex-direction: column;
@@ -24,6 +16,14 @@ body{
     margin: 0;
     padding: 0;
     width: 100%;
+}
+
+.header {
+    background-color: #93C572;
+    width: 100%; /* Make the header stretch the full width */
+    /* padding: 15px 0; Optional: Add some padding for spacing */
+    box-sizing: border-box; /* Include padding in the element's total width */
+    text-align: center; /* Optional: Center text within the header */
 }
 
 .icon{
