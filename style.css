@@ -14,7 +14,8 @@
     width: 100%;
     position: sticky;
     top: 0;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
 }
 
 h1 {
@@ -27,7 +28,8 @@ h1 {
 h3 {
     font-family: title;
     color: #93C572;
-    font-size: 3.5vh;
+    font-size: 4vh;
+    text-align: center;
     margin: 0;
 }
 
@@ -63,7 +65,7 @@ body{
     height: 50vh;
     width: 80vw;
     border-bottom-color: #93C572;
-    border-bottom-width: 0.75px;
+    border-bottom-width: 0.80px;
     border-bottom-style: dotted;
  }
 
@@ -71,3 +73,27 @@ body{
     height: 60%;
     margin: 0 3vw;
  }
+
+.logo {
+    height: 7vh;
+    margin-left: 3vw;
+}
+
+.navbar-icons, .navbar-logo {
+    min-width: 20vw;
+}
+
+.navbar-icons {
+    display: flex;
+    justify-content: center;
+}
+.icon {
+    height: 5vh;
+    margin: 1vw;
+}
+
+.icon:hover {
+    stroke: #ffcc00;
+    transform: scale(1.1); /* Slightly enlarges the icon */
+    transition: transform 0.3s ease, stroke 0.3s ease; /* Smooth transition for both color and size */
+}
