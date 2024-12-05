@@ -1,8 +1,100 @@
+
+
 @font-face{
-    font-family: main;
-    src: url(fonts/Cormorant-Light.ttf);
+    font-family: title;
+    src: url(fonts/MoiraiOne-Regular.ttf);
 }
 
+@font-face{
+    font-family: main;
+    src: url(fonts/InstrumentSans-Regular.ttf);
+}
+
+body{
+    padding: 0px;
+    margin: 0px;
+}
+
+main{
+    background-color:#F1EFE7   
+}
+
+/* .seseme_seeds ul{
+    list-style-type: none;
+    background-color: #49863D;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seseme_seeds a{
+    color:#F1EFE7;
+    text-decoration: none;
+    padding: 15px;
+    font-family: main;
+
+}
+
+.seseme_seeds a:hover{
+    color: blue;
+} */
+
+.seseme_seeds{
+    display: flex;
+    background-color: #49863D;
+    position: sticky;
+    /* width: 100%;
+    top: 0;
+    justify-content: space-between;
+    align-items: center; */
+}
+
+.title{
+    font-family: title;
+    font-weight: bolder;
+    color:#49863D;
+    text-align: center;
+}
+
+h1{
+    font-size: 45px;
+}
+
+h3{
+    font-size: 20px;
+}
+
+.main_text{
+    font-family: main;
+    text-align: center;
+}
+
+.top_bun{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.patty{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+}
+
+.project{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+/*
 @font-face{
     font-family: title;
     src: url(fonts/Tiny5-Regular.ttf);
@@ -10,7 +102,7 @@
 
 .navbar {
     display: flex;
-    background-color: #93C572;
+    background-color: #49863D;
     width: 100%;
     position: sticky;
     top: 0;
@@ -21,13 +113,13 @@
 h1 {
     font-family: title;
     font-size: 6vh;
-    color: white;
+    color: #F1EFE7;
     margin: 2vh;
 }
 
 h3 {
     font-family: title;
-    color: #93C572;
+    color: #49863D;
     font-size: 4vh;
     text-align: center;
     margin: 0;
@@ -40,6 +132,7 @@ p {
 }
 
 body{
+    background-color: #F1EFE7;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -64,7 +157,7 @@ body{
     align-items: center; 
     height: 50vh;
     width: 80vw;
-    border-bottom-color: #93C572;
+    border-bottom-color: #49863D;
     border-bottom-width: 0.80px;
     border-bottom-style: dotted;
  }
@@ -95,13 +188,13 @@ body{
 .icon:hover, .btn:hover {
     stroke: #ffcc00;
     transform: scale(1.1); /* Slightly enlarges the icon */
-    transition: transform 0.3s ease, stroke 0.3s ease; /* Smooth transition for both color and size */
-}
+    /* transition: transform 0.3s ease, stroke 0.3s ease; /* Smooth transition for both color and size */
+/* }
 
 .btn {
     display: inline-block;
-    background-color: #93C572;
-    color: white;
+    background-color: #49863D;
+    color: #F1EFE7;
     font-size: 2.5vh;
     font-family: title;
     text-decoration: none;
@@ -109,4 +202,6 @@ body{
     padding: 1.25vh;
     width: 100%;
     border-radius: 5px;
-}
+} */ 
+
+/* old green #93C572 */
