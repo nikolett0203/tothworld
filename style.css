@@ -1,163 +1,8 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-@font-face{
-    font-family: headers;
-    src: url(fonts/MoiraiOne-Regular.ttf);
-}
-
-@font-face{
-    font-family: descriptions;
-    src: url(fonts/InstrumentSans-Regular.ttf);
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #F1EFE7;
-}
-
-.top-bun {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    gap: 1vh;
-}
-
-.logo {
-    height: 25vh;
-}
-
-h1 {
-    font-family: headers;
-    font-size: 8vh;
-    color: #49863D;
-}
-
-h4 {
-    font-family: descriptions;
-    font-size: 2.3vh;
-    width: 75vw;
-    text-align: center;
-}
-
-/* main {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #F1EFE7;
-}
-
-.top-bun {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-}
-
- */
-
-/* @font-face{
-    font-family: title;
-    src: url(fonts/MoiraiOne-Regular.ttf);
-}
-
 @font-face{
     font-family: main;
-    src: url(fonts/InstrumentSans-Regular.ttf);
+    src: url(fonts/Cormorant-Light.ttf);
 }
 
-body{
-    padding: 0px;
-    margin: 0px;
-}
-
-main{
-    background-color:#F1EFE7   
-} */
-
-/* .seseme_seeds ul{
-    list-style-type: none;
-    background-color: #49863D;
-    padding: 0px;
-    margin: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-/*
-.seseme_seeds a{
-    color:#F1EFE7;
-    text-decoration: none;
-    padding: 15px;
-    font-family: main;
-
-}
-
-.seseme_seeds a:hover{
-    color: blue;
-} */
-
-/* .seseme_seeds{
-    display: flex;
-    background-color: #49863D;
-    position: sticky;
-    /* width: 100%;
-    top: 0;
-    justify-content: space-between;
-    align-items: center; */
-
-/* .title{
-    font-family: title;
-    font-weight: bolder;
-    color:#49863D;
-    text-align: center;
-}
-
-h1{
-    font-size: 45px;
-}
-
-h3{
-    font-size: 20px;
-}
-
-.main_text{
-    font-family: main;
-    text-align: center;
-}
-
-.top_bun{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.patty{
-    display: flex;
-    flex-direction: row;
-    justify-content:space-around;
-}
-
-.project{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-} */
-
-
-/*
 @font-face{
     font-family: title;
     src: url(fonts/Tiny5-Regular.ttf);
@@ -165,7 +10,7 @@ h3{
 
 .navbar {
     display: flex;
-    background-color: #49863D;
+    background-color: #93C572;
     width: 100%;
     position: sticky;
     top: 0;
@@ -176,13 +21,13 @@ h3{
 h1 {
     font-family: title;
     font-size: 6vh;
-    color: #F1EFE7;
+    color: white;
     margin: 2vh;
 }
 
 h3 {
     font-family: title;
-    color: #49863D;
+    color: #93C572;
     font-size: 4vh;
     text-align: center;
     margin: 0;
@@ -195,7 +40,6 @@ p {
 }
 
 body{
-    background-color: #F1EFE7;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -220,7 +64,7 @@ body{
     align-items: center; 
     height: 50vh;
     width: 80vw;
-    border-bottom-color: #49863D;
+    border-bottom-color: #93C572;
     border-bottom-width: 0.80px;
     border-bottom-style: dotted;
  }
@@ -251,13 +95,13 @@ body{
 .icon:hover, .btn:hover {
     stroke: #ffcc00;
     transform: scale(1.1); /* Slightly enlarges the icon */
-    /* transition: transform 0.3s ease, stroke 0.3s ease; /* Smooth transition for both color and size */
-/* }
+    transition: transform 0.3s ease, stroke 0.3s ease; /* Smooth transition for both color and size */
+}
 
 .btn {
     display: inline-block;
-    background-color: #49863D;
-    color: #F1EFE7;
+    background-color: #93C572;
+    color: white;
     font-size: 2.5vh;
     font-family: title;
     text-decoration: none;
@@ -265,6 +109,4 @@ body{
     padding: 1.25vh;
     width: 100%;
     border-radius: 5px;
-} */ 
-
-/* old green #93C572 */
+}
