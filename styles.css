@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.night-sky {
+    /* sky shouldn't move with scroll */
+    position: fixed;  
+    
+    /* want sky to fill entire screen starting from top 
+    left + set it behind everything else with z-index */
+    top: 0;    
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+
+    background: linear-gradient(to bottom, #0a0a2a 0%, #090921 70%, #120a29 100%);
+
+    /* come back to this */
+    transition: background 0.5s ease;
+}
+
+.galaxy {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -9;
+
+    /* adjust opacity to give a twinkle effect */
+    opacity: 1;
+    transition: opacity 1s ease;
+
+    /* if stars spawn outside the container, 
+    clip them */
+    /* overflow: hidden; */
+}
+
+.star {
+    background-color: white;
+
+    /* absolute positioning allows us to scatter
+    stars randomly inside the div */
+    position: absolute;
+
+    /* curves the div into a circle */
+    border-radius: 50%;
+}
+
+.meteor {
+    position: absolute;
+    transform: rotate(45deg);
+
+    /* should be a thin vertical streak */
+    width: 2px;
+    height: 50px;
+
+    /* brightness should taper off like a real meteor */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+
+    /* meteor shoots at constant speed for 6s */
+    animation: meteor 3s linear infinite;
+    opacity: 0;
+}
+
+/* animation for twinkling stars */
+@keyframes twinkle {
+    /* at start (0%) and end (100%) opacity is full and size is normal */
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    /* halfway through animation (50%) opacity is faded and size is 80% of normal */
+    50% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+}
+
+/* note: CSS replaces entire transform with the one specified inside the
+animation, which is why we need to include the rotate(45deg) again */
+@keyframes meteor {
+    /* meteor starts dark at .js defined position */
+    0% {
+        opacity: 0;
+        transform: translateX(0) translateY(0) rotate(45deg);
+    }
+    10% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-200px) translateY(200px) rotate(45deg);
+    }
+}
