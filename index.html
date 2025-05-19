@@ -1,124 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>positions: retro space age</title>
-  <link href="https://fonts.cdnfonts.com/css/positions-by-arixbored" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'DM Sans', sans-serif;
-      background: linear-gradient(135deg, #E3EFE3, #D8EAD8);
-      overflow-x: hidden;
-      color: #2F3E34;
-    }
+<html lang='en'>
 
-    header {
-      text-align: center;
-      padding: 4rem 2rem 2rem;
-      position: relative;
-    }
+    <head>
+        <meta charset='UTF-8'>
+        <title>Toth World</title>
+        <link href="https://fonts.cdnfonts.com/css/positions-by-arixbored" rel="stylesheet">
+        <style>
+            h1 {
+                font-family: 'Positions By Arixbored'
+            }
+        </style>
+    </head>
 
-    h1 {
-      font-family: 'Positions By Arixbored', sans-serif;
-      font-size: 4rem;
-      color: #5E7267;
-      animation: float 6s ease-in-out infinite;
-    }
+    <body>
 
-    .orbit-ring {
-      width: 180px;
-      height: 180px;
-      border: 2px dashed #C5D1C4;
-      border-radius: 50%;
-      position: absolute;
-      top: 20px;
-      left: calc(50% - 90px);
-      animation: spin 30s linear infinite;
-      opacity: 0.2;
-    }
+        <section class='top-bun'>
 
-    .card {
-      max-width: 600px;
-      margin: 2rem auto;
-      padding: 2rem 3rem;
-      border-radius: 2rem;
-      background: rgba(181, 203, 183, 0.25);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 8px 30px rgba(94, 114, 103, 0.25);
-      text-align: center;
-    }
+            <h1>Toth World</h1>
 
-    .button-panel {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
+        </section>
 
-    .astro-button {
-      background-color: #A9BDAE;
-      border: 2px solid #5E7267;
-      border-radius: 999px;
-      padding: 0.7rem 2rem;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: bold;
-      color: #2F3E34;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      box-shadow: 0 4px 10px rgba(47, 62, 52, 0.2);
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
+    </body>
 
-    .astro-button:hover {
-      background-color: #B5CBB7;
-      box-shadow: 0 0 12px #C5D1C4;
-      transform: translateY(-2px);
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0); }
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      margin-top: 4rem;
-      padding: 2rem;
-      color: #8D9F92;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="orbit-ring"></div>
-    <h1>positions mode: on</h1>
-  </header>
-
-  <main>
-    <div class="card">
-      <p>Garden-powered soft futurism. Retro space elegance with a muted green edge.<br>Inspired by Ariana's <em>positions</em> & r.e.m. beauty.</p>
-
-      <div class="button-panel">
-        <button class="astro-button">launch</button>
-        <button class="astro-button">orbit</button>
-      </div>
-    </div>
-  </main>
-
-  <footer>
-    &copy; 2025 by You. Floating through the stars 🌿
-  </footer>
-</body>
 </html>
