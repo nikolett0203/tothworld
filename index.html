@@ -1,71 +1,124 @@
 <!DOCTYPE html>
-<html lang='en'>
-
+<html lang="en">
 <head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Toth World</title>
-    <link href='styles.css' rel='stylesheet'> 
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>positions: retro space age</title>
+  <link href="https://fonts.cdnfonts.com/css/positions-by-arixbored" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(135deg, #E3EFE3, #D8EAD8);
+      overflow-x: hidden;
+      color: #2F3E34;
+    }
 
+    header {
+      text-align: center;
+      padding: 4rem 2rem 2rem;
+      position: relative;
+    }
+
+    h1 {
+      font-family: 'Positions By Arixbored', sans-serif;
+      font-size: 4rem;
+      color: #5E7267;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .orbit-ring {
+      width: 180px;
+      height: 180px;
+      border: 2px dashed #C5D1C4;
+      border-radius: 50%;
+      position: absolute;
+      top: 20px;
+      left: calc(50% - 90px);
+      animation: spin 30s linear infinite;
+      opacity: 0.2;
+    }
+
+    .card {
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 2rem 3rem;
+      border-radius: 2rem;
+      background: rgba(181, 203, 183, 0.25);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 30px rgba(94, 114, 103, 0.25);
+      text-align: center;
+    }
+
+    .button-panel {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .astro-button {
+      background-color: #A9BDAE;
+      border: 2px solid #5E7267;
+      border-radius: 999px;
+      padding: 0.7rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: bold;
+      color: #2F3E34;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 10px rgba(47, 62, 52, 0.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .astro-button:hover {
+      background-color: #B5CBB7;
+      box-shadow: 0 0 12px #C5D1C4;
+      transform: translateY(-2px);
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 4rem;
+      padding: 2rem;
+      color: #8D9F92;
+    }
+  </style>
 </head>
-
 <body>
+  <header>
+    <div class="orbit-ring"></div>
+    <h1>positions mode: on</h1>
+  </header>
 
-    <div class='night-sky'></div>
-    <div class='galaxy' id='galaxy'></div>
-    <!-- <div class='sun' id='sun'></div> -->
+  <main>
+    <div class="card">
+      <p>Garden-powered soft futurism. Retro space elegance with a muted green edge.<br>Inspired by Ariana's <em>positions</em> & r.e.m. beauty.</p>
 
+      <div class="button-panel">
+        <button class="astro-button">launch</button>
+        <button class="astro-button">orbit</button>
+      </div>
+    </div>
+  </main>
 
-    <section class='hero' id='hero'>
-        <h1>TOTH WORLD</h1>
-        <h4> 
-            "I've been going through it, you just go around it <br>
-            But it's really not that different when you think about it" <br><br>
-            <b>- Mac Miller, </b></em><i>Hurt Feelings</i> 
-        </h4>
-        <div class='hold-butts'>
-            <div class='button'></div>
-            <div class='button'></div>
-            <div class='button'></div>
-            <div class='button'></div>
-        </div>
-
-        <!-- <div class='button-array'>
-            <a href="#about-me" class="button">About Me</a>
-            <a href="#projects" class="button">Projects</a>
-        </div> -->
-    </section>
-
-
-    <!-- R package for data preprocessing, analysis, and visualization in association rule mining -->
-
-
-    <section class='about-me' id='about-me'>
-        <h1>about me</h1>
-    </section>
-
-    <section class='projects' id='projects'>
-        <div class='project'>
-            <img src='assets/images/broccoli.png' class='icon'>
-            <h3>RULES TOOLS</h3>
-            <p>An R package for data preprocessing, analysis, and visualization in machine learning applications.</p>
-        </div>
-        <div class='project'>
-            <img src='assets/images/apple.png' class='icon'>
-            <h3>TUNETWIN.CA</h3>
-            <p>A music recommendation app for finding songs similar to your favourite tracks.</p>
-        </div>
-        <div class='project'>
-            <img src='assets/images/burger.png' class='icon'>
-            <h3>FOOD FIGHT</h3>
-            <p>A website for competing with your friends to see who can eat the healthiest meals.</p>
-        </div>        
-        <!-- <h1>projects</h1> -->
-    </section>
-
-    <script type="module" src="js/main.js"></script>
-
+  <footer>
+    &copy; 2025 by You. Floating through the stars 🌿
+  </footer>
 </body>
-
 </html>
