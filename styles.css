@@ -267,7 +267,7 @@ document.querySelectorAll('.nav-item').forEach(item => {
     left: 50%;
     transform: translateX(-50%);
 
-    font-family: 'Inter', sans-serif;
+    font-family: 'Positions by arixbored', 'Inter', sans-serif;
     font-weight: 100;
     color: white;
 
