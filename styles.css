@@ -127,7 +127,7 @@ layout uses margin-left: 120px on .main-content to make space for the sidebar --
     position: fixed;
     left: 0;
     top: 0;
-    width: 120px;
+    width: 10vw;
     height: 100vh;
     z-index: 10;
 
