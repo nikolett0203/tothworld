@@ -167,3 +167,62 @@ layout uses margin-left: 120px on .main-content to make space for the sidebar --
     color: white;
     transform: translateX(5px);
 }
+
+.seseme-seeds {
+    /* stuck to viewport, rather than container (like absolute) */
+    position: fixed;
+    top: 40px;
+    right: 40px;
+
+    display: flex;
+    gap: 30px;
+    z-index: 10;
+}
+
+.seed {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 2px;
+
+    /* sets seed as reference point for absolutely position child elements */
+    position: relative;
+
+    transition: all 0.3 ease;
+
+    text-decoration: none;
+}
+
+.seed:hover {
+    color: white;
+}
+
+/* 
+  
+  
+  .seed::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: white;
+    transition: width 0.3s ease;
+  }
+  
+  .seed:hover::after {
+    width: 100%;
+  }
+
+
+  // smooth scrolling for navigation placeholder
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', function(e) {
+    e.preventDefault();
+    // scroll or section switching logic goes here
+  });
+});
+
+   */
