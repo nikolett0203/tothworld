@@ -104,7 +104,7 @@ animation, which is why we need to include the rotate(45deg) again */
     }
 }
 
-/*******************************  CONTENT  *******************************/
+/*******************************  NAV AND SIDE  *******************************/
 
 
 
@@ -127,7 +127,7 @@ layout uses margin-left: 120px on .main-content to make space for the sidebar --
     position: fixed;
     left: 0;
     top: 0;
-    width: 10vw;
+    width: 100px;
     height: 100vh;
     z-index: 10;
 
@@ -198,23 +198,34 @@ layout uses margin-left: 120px on .main-content to make space for the sidebar --
     color: white;
 }
 
-/* 
-  
-  
-  .seed::after {
+/* after is used to create a pseudo element that is the last child of the selected element */
+.seed::after {
+    /* basically creates a blank div, no text */
     content: '';
+
+    /* place it relative to seed */
     position: absolute;
+
+    /* 5 pixels below seed */
     bottom: -5px;
+
     left: 0;
+
+    /* start at 0 width (invisible) and increase when hovered */
     width: 0;
+
     height: 1px;
     background: white;
+    
     transition: width 0.3s ease;
-  }
+}
   
-  .seed:hover::after {
+.seed:hover::after {
     width: 100%;
-  }
+}
+
+/* 
+  
 
 
   // smooth scrolling for navigation placeholder
