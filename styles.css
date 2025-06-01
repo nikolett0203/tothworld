@@ -1,0 +1,252 @@
+@import url('https://fonts.cdnfonts.com/css/positions-by-arixbored');
+
+@font-face {
+    font-family: saira;
+    src: url(./assets/fonts/Saira/Saira-VariableFont_wdth,wght.ttf);
+}
+
+@font-face {
+    font-family: exo2;
+    src: url(./assets/fonts/Exo_2/Exo2-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: inter;
+    src: url(assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf);
+}
+
+@font-face {
+    font-family: morai;
+    src: url(assets/fonts/Moirai_One/MoiraiOne-Regular.ttf);
+}
+
+@font-face {
+    font-family: fredoka;
+    src: url(assets/fonts/Fredoka/Fredoka-VariableFont_wdth,wght.ttf);
+}
+
+@font-face {
+    font-family: cormorant;
+    src: url(assets/fonts/Cormorant/Cormorant-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: albert-sans;
+    src: url(assets/fonts/Albert_Sans/AlbertSans-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: instrument-sans;
+    src: url(assets/fonts/Albert_Sans/AlbertSans-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: suse;
+    src: url(assets/fonts/SUSE/SUSE-VariableFont_wght.ttf);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.night-sky {
+    /* sky shouldn't move with scroll */
+    position: fixed;  
+    
+    /* want sky to fill entire screen starting from top 
+    left + set it behind everything else with z-index */
+    top: 0;    
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+
+    /* come back to this */
+    transition: background 0.5s ease;
+}
+
+.galaxy {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -9;
+
+    /* adjust opacity to give a twinkle effect */
+    opacity: 1;
+    transition: opacity 1s ease;
+
+    /* if stars spawn outside the container, 
+    clip them */
+    /* overflow: hidden; */
+}
+
+.star {
+    background-color: white;
+
+    /* absolute positioning allows us to scatter
+    stars randomly inside the div */
+    position: absolute;
+
+    /* curves the div into a circle */
+    border-radius: 50%;
+}
+
+.meteor {
+    position: absolute;
+    transform: rotate(45deg);
+
+    /* should be a thin vertical streak */
+    width: 2px;
+    height: 50px;
+
+    /* brightness should taper off like a real meteor */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+
+    /* meteor shoots at constant speed for 6s */
+    animation: meteor 3s linear infinite;
+    opacity: 0;
+}
+
+
+/* animation for twinkling stars */
+@keyframes twinkle {
+    /* at start (0%) and end (100%) opacity is full and size is normal */
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    /* halfway through animation (50%) opacity is faded and size is 80% of normal */
+    50% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+}
+
+/* note: CSS replaces entire transform with the one specified inside the
+animation, which is why we need to include the rotate(45deg) again */
+@keyframes meteor {
+    /* meteor starts dark at .js defined position */
+    0% {
+        opacity: 0;
+        transform: translateX(0) translateY(0) rotate(45deg);
+    }
+    10% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-200px) translateY(200px) rotate(45deg);
+    }
+}
+
+/*******************************  NEW STUFF  *******************************/
+
+.hero, .about-me, .projects {
+    display: flex;
+
+    /* each section should be a full screen */
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero {
+    top: 0;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-me {
+    top: 100%;
+}
+
+.projects {
+    top: 200%;
+
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap; 
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    /* border: solid 2px white; */
+    border-radius: 10%;
+    margin: 5vh;
+    min-width: 200px;
+    max-width: 25vw;
+}
+
+h1 {
+    color: white;
+    font-family: 'Positions By Arixbored', albert-sans;
+    font-weight: 200;
+    font-size: 9vh;
+
+    /* text-shadow: 0 0 15px rgba(255, 255, 255, 0.8),
+    0 0 30px rgba(100, 200, 255, 0.5),
+    0 0 50px rgba(100, 200, 255, 0.3); */
+}
+
+h3 {
+    color: white;
+    font-family: albert-sans;
+    font-weight: 200;
+    font-size: 4vh; 
+    text-align: justify;
+}
+
+h4 {
+    color: white;
+    text-align: center;
+    font-family: suse;
+    font-weight: 200;
+    font-size: 2.5vh;
+    padding: 50px 0px;
+}
+
+.button {
+    height: 10.5vh;
+    width: 10.5vh;
+    border: solid 2px white;
+    border-radius: 50%;
+    margin: 0px 10px;
+}
+
+.hold-butts {
+    display: flex;
+    flex-direction: row;
+}
+
+.icon {
+    height: 20vh;
+    width: 20vh;
+}
+
+p {
+    color: white;
+    font-family: albert-sans;
+    text-align: center;
+    font-weight: 200;
+    font-size: 2.5vh;
+}
+/* suse, instrument-sans, albert-sans, cormorant, fredoka, morai, inter, exo2, saira */
