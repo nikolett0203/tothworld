@@ -151,7 +151,7 @@ layout uses margin-left: 120px on .main-content to make space for the sidebar --
     /* want letters to be sideways too */
     text-orientation: mixed;
 
-    font-family: 'Inter', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     font-size: 15px;
     font-weight: 300;
     color: rgba(255, 255, 255, 0.8);
@@ -187,7 +187,7 @@ layout uses margin-left: 120px on .main-content to make space for the sidebar --
 }
 
 .seed {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     font-size: 15px;
     font-weight: 300;
     color: rgba(255, 255, 255, 0.8);
@@ -267,8 +267,8 @@ document.querySelectorAll('.nav-item').forEach(item => {
     left: 50%;
     transform: translateX(-50%);
 
-    font-family: 'Inter', sans-serif;
-    font-weight: 100;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 500;
     color: white;
 
     /* responsive size: at least 3rem, grow with screen (8vw) but never exceed 6rem */
@@ -287,7 +287,7 @@ document.querySelectorAll('.nav-item').forEach(item => {
     flex-wrap: wrap;
     gap: 20px;
 
-    font-family: 'Inter', sans-serif;
+    font-family: 'Urbanist', sans-serif;
     font-weight: 300;
     color: rgba(255, 255, 255, 0.85);
     letter-spacing: 1px;
@@ -308,5 +308,3 @@ document.querySelectorAll('.nav-item').forEach(item => {
         transform: translate(-50%, -50%) translateY(0px);
     }
 }
-
-
