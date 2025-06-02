@@ -258,7 +258,7 @@ document.querySelectorAll('.nav-item').forEach(item => {
   
     /* leave room for sidebar + center text */
     padding-left: 8vw; 
-    padding-right: 4vw; 
+    padding-right: 5.5vw; 
   }
   
 
