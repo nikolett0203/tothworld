@@ -257,7 +257,7 @@ document.querySelectorAll('.nav-item').forEach(item => {
     position: relative;
   
     /* leave room for sidebar + center text */
-    padding-left: 7vw; 
+    padding-left: 8vw; 
     padding-right: 4vw; 
   }
   
@@ -296,7 +296,7 @@ document.querySelectorAll('.nav-item').forEach(item => {
     flex-wrap: wrap;
     gap: 10px;
 
-    font-size: clamp(15px, 2vw, 18px);
+    font-size: clamp(18px, 2vw, 22px);
     font-weight: 300;
     color: rgba(255, 255, 255, 0.85);
     letter-spacing: 1px;
