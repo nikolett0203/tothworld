@@ -134,7 +134,7 @@ layout uses margin-left: 120px on .main-content to make space for the sidebar --
     position: fixed;
     left: 0;
     top: 0;
-    width: 10vw;
+    width: 7vw;
     height: 100vh;
     z-index: 10;
 
@@ -246,65 +246,68 @@ document.querySelectorAll('.nav-item').forEach(item => {
    */
 
 /********************************  TITLE  ********************************/
-
 .bun-top {
-    position: fixed;
-    z-index: 10;
+    /* starter page takes up whole screen */
+    height: 100vh;
+    z-index: 5;
 
-    /* place top left corner in center of screen */
-    top: 50%;
-    left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  
+    /* leave room for sidebar + center text */
+    padding: 0 7vw; 
+  }
+  
 
-    /* offset by half height and width for perfect centering */
-    transform: translate(-50%, -50%);
+.bun-ingredients {
+    font-family: 'Urbanist', sans-serif;
+    color: white;
 
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.moon {
+    width: 7vh;
+    height: auto;
+    fill: white;
+
+    /* 0 0 = no horizontal/vertical offsets, 10px = blur radius, white colour with 0.5 opacity */
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
 }
 
 .title {
-    /* title was wonky without this */
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-
-    font-family: 'Urbanist', sans-serif;
-    font-weight: 500;
-    color: white;
-
-    /* responsive size: at least 3rem, grow with screen (8vw) but never exceed 6rem */
+    /* responsive size: at least 40px, grow with screen (8vw) but never exceed 60px */
     font-size: clamp(40px, 8vw, 60px);
-
-    margin-bottom: 2rem;
-    letter-spacing: 4px;  
+    font-weight: 500;
+    letter-spacing: 4px;
 
     animation: float 6s ease-in-out infinite;
 }
 
 .subtitle {
     display: flex;
-    align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
 
-    font-family: 'Urbanist', sans-serif;
+    font-size: clamp(15px, 2vw, 18px);
     font-weight: 300;
     color: rgba(255, 255, 255, 0.85);
     letter-spacing: 1px;
-    font-size: clamp(15px, 2vw, 18px);
 }
 
 @keyframes float {
-    0% {
-        transform: translate(-50%, -50%) translateY(0px);
+    0%, 100% {
+        transform: translateY(0px);
     }
 
     /* shift it down 10px to make it look like it's bobbing */
     50% {
-        transform: translate(-50%, -50%) translateY(-10px);
-    }
-
-    100% {
-        transform: translate(-50%, -50%) translateY(0px);
+        transform: translateY(-10px);
     }
 }
