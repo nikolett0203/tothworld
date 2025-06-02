@@ -283,7 +283,7 @@ document.querySelectorAll('.nav-item').forEach(item => {
 
 .title {
     /* responsive size: at least 40px, grow with screen (8vw) but never exceed 60px */
-    font-size: clamp(40px, 8vw, 60px);
+    font-size: clamp(40px, 8vw, 55px);
     font-weight: 500;
     letter-spacing: 4px;
 
@@ -294,7 +294,7 @@ document.querySelectorAll('.nav-item').forEach(item => {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 20px;
 
     font-size: clamp(18px, 2vw, 22px);
     font-weight: 300;
