@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikolett Toth - Portfolio</title>
+    <link href="https://fonts.cdnfonts.com/css/positions-by-arixbored" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #000;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Your existing space background */
+        .night-sky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -10;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            transition: background 0.5s ease;
+        }
+
+        .galaxy {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -9;
+            opacity: 1;
+            transition: opacity 1s ease;
+        }
+
+        .star {
+            background-color: white;
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .meteor {
+            position: absolute;
+            transform: rotate(45deg);
+            width: 2px;
+            height: 50px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+            animation: meteor 3s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.8); }
+        }
+
+        @keyframes meteor {
+            0% { opacity: 0; transform: translateX(0) translateY(0) rotate(45deg); }
+            10% { opacity: 1; }
+            70% { opacity: 1; }
+            100% { opacity: 0; transform: translateX(-200px) translateY(200px) rotate(45deg); }
+        }
+
+        /* Minimal Template Styles */
+        .minimal-hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        /* <div class="minimal-hero">
+        <h1 class="name-large" id="floating-name">toth  world</h1>
+        <p class="subtitle">DEVELOPER · CREATOR · DREAMER</p>
+    </div> */
+
+        .name-large {
+            font-family: 'Positions by Arixbored', 'Inter', sans-serif;
+            font-size: 5rem;
+            font-weight: 100;
+            letter-spacing: 8px;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1.5s ease-out;    
+            display: flex;
+            justify-content: center;
+        }
+
+        .floating-letter {
+            display: inline-block;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 3px;
+            margin-bottom: 4rem;
+            animation: fadeInUp 1.5s ease-out 0.3s both;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: center;
+        }
+
+        .subtitle .floating-letter {
+            display: inline-block;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            animation: bounce 2s infinite;
+        }
+
+        /* Gentle Wave Floating Animations */
+        @keyframes gentleWave1 {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-3px); }
+        }
+
+        @keyframes gentleWave2 {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-4px); }
+        }
+
+        @keyframes gentleWave3 {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-2px); }
+        }
+
+        @keyframes gentleWave4 {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes gentleWave5 {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-3px); }
+        }
+
+        @keyframes gentleWave6 {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-4px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Your existing sidebar */
+        .fries {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 10vw;
+            height: 100vh;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fry {
+            writing-mode: vertical-lr;
+            text-orientation: mixed;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 2px;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .fry:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .name-large { 
+                font-size: 3rem; 
+                letter-spacing: 4px; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="night-sky"></div>
+    <div class="galaxy" id="galaxy"></div>
+
+    <!-- Your existing sidebar -->
+    <div class="fries">
+        <a class="fry" href="#" target="#">RESUME</a>
+        <a class="fry" href="https://github.com/nikolett0203" target="_blank">GITHUB</a>
+        <a class="fry" href="https://www.linkedin.com/in/nikototh/" target="_blank">LINKEDIN</a>
+    </div>
+
+    <!-- Minimal Hero Section -->
+    <div class="minimal-hero">
+        <h1 class="name-large" id="floating-name">toth  world</h1>
+        <p class="subtitle">DEVELOPER · CREATOR · DREAMER</p>
+    </div>
+    <div class="scroll-hint">SCROLL TO EXPLORE</div>
+
+    <script>
+        // Generate stars (simplified version of your existing code)
+        function generateStars() {
+            const galaxy = document.getElementById('galaxy');
+            const starCount = 200;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                const size = 0.5 + Math.random() * 2;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.opacity = 0.3 + Math.random() * 0.7;
+                
+                const duration = 3 + Math.random() * 4;
+                const delay = Math.random() * 5;
+                star.style.animation = `twinkle ${duration}s ${delay}s infinite ease-in-out`;
+                
+                galaxy.appendChild(star);
+            }
+        }
+
+        // Create gentle wave floating letters
+        function createFloatingLetters() {
+            // Float the name letters with wave effect
+            const nameElement = document.getElementById('floating-name');
+            if (nameElement) {
+                const nameText = nameElement.textContent;
+                nameElement.innerHTML = '';
+                
+                for (let i = 0; i < nameText.length; i++) {
+                    const letter = nameText[i];
+                    const span = document.createElement('span');
+                    span.textContent = letter;
+                    span.className = 'floating-letter';
+                    
+                    // Create wave effect with staggered timing
+                    const animationIndex = (i % 6) + 1;
+                    const duration = 4; // Slower, more gentle
+                    const delay = i * 0.3; // More pronounced wave stagger
+                    
+                    span.style.animation = `gentleWave${animationIndex} ${duration}s ease-in-out infinite ${delay}s`;
+                    nameElement.appendChild(span);
+                }
+            }
+
+            // Float the subtitle letters with different wave timing
+            const subtitleElement = document.getElementById('floating-subtitle');
+            if (subtitleElement) {
+                const subtitleText = subtitleElement.textContent;
+                subtitleElement.innerHTML = '';
+                
+                for (let i = 0; i < subtitleText.length; i++) {
+                    const letter = subtitleText[i];
+                    const span = document.createElement('span');
+                    span.textContent = letter;
+                    span.className = 'floating-letter';
+                    
+                    // Slower wave for subtitle
+                    const animationIndex = (i % 6) + 1;
+                    const duration = 5; // Even slower
+                    const delay = i * 0.15; // Subtle wave
+                    
+                    span.style.animation = `gentleWave${animationIndex} ${duration}s ease-in-out infinite ${delay}s`;
+                    subtitleElement.appendChild(span);
+                }
+            }
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            generateStars();
+            createFloatingLetters();
+        }
+    </script>
+</body>
+</html>
