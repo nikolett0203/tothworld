@@ -167,7 +167,7 @@ animation, which is why we need to include the rotate(45deg) again */
     justify-content: center;
 
     /* use min-height instead of height in case of mobile wrapping / longer text */
-    min-height: 100vh;
+    height: 100vh;
     text-align: center;
 }
 
