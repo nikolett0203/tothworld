@@ -1,3 +1,4 @@
+// creates floating letter effect for titles
 export function zeroG () {
 
     const titles = document.querySelectorAll('.main-title');

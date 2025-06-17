@@ -1,7 +1,9 @@
 import { spawnGalaxy } from './stars.js';
 import { zeroG } from './title.js';
+import { spawnNebula } from './nebula.js';
 
 window.onload = function () {
     spawnGalaxy();
     zeroG();
+    spawnNebula();
 }
