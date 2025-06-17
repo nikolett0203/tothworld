@@ -314,3 +314,18 @@ animation, which is why we need to include the rotate(45deg) again */
         display: none;
     }
 }
+
+/********************************* PROJECTS *********************************/
+
+.patty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    height: 100vh;
+    text-align: center;
+}
+
+#project-title {
+    font-size: clamp(1.9rem, 4.5vw, 2.7rem);
+}

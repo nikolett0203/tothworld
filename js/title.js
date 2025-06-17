@@ -1,8 +1,8 @@
 export function zeroG () {
 
-    const title = document.getElementById('main-title');
+    const titles = document.querySelectorAll('.main-title');
 
-    if (title) {
+    titles.forEach((title) => {
 
         // retrieve HTML text, then clear the whole tag / nested elements
         const title_text = title.textContent;
@@ -27,6 +27,6 @@ export function zeroG () {
             // then add span to html
             title.appendChild(span)
         }
-    }
+    });
 }
 
