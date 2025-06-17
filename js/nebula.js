@@ -92,5 +92,4 @@ function draw() {
 
     // as soon as frame is complete, draw the next one
     requestAnimationFrame(draw);
-
 }

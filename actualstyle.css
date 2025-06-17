@@ -219,32 +219,32 @@ animation, which is why we need to include the rotate(45deg) again */
 
 @keyframes float {
     0%, 100% {transform: translateY(0px);}
-    50% {transform: translateY(-5px);}
+    50% {transform: translateY(-6px);}
 }
 
 @keyframes float2 {
     0%, 100% {transform: translateY(0px);}
-    50% {transform: translateY(-4px);}
+    50% {transform: translateY(-5px);}
 }
 
 @keyframes float3 {
     0%, 100% {transform: translateY(0px);}
-    50% {transform: translateY(-3px);}
+    50% {transform: translateY(-4px);}
 }
 
 @keyframes float4 {
     0%, 100% {transform: translateY(0px);}
-    50% {transform: translateY(-2px);}
+    50% {transform: translateY(-3px);}
 }
 
 @keyframes float5 {
     0%, 100% {transform: translateY(0px);}
-    50% {transform: translateY(-3px);}
+    50% {transform: translateY(-4px);}
 }
 
 @keyframes float6 {
     0%, 100% {transform: translateY(0px);}
-    50% {transform: translateY(-4px);}
+    50% {transform: translateY(-5px);}
 }
 
 @keyframes rise {
