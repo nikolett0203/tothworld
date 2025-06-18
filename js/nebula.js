@@ -14,9 +14,9 @@ const centerY = () => canvas.height / 2;
 // define planet attributes
 // rx/y: horizontal/vertical radii of orbit, angle: starting angle of orbit in radians
 let planets = [
-    { rX: 160, rY: 90, speed: 0.006, angle: 1, size: 7, color: 'white', id: 1, hover: false, og_speed: 0.006 },
-    { rX: 240, rY: 130, speed: 0.004, angle: 2, size: 10, color: 'white', id: 2, hover: false, og_speed: 0.004 },
-    { rX: 320, rY: 180, speed: 0.0025, angle: 3.2, size: 12, color: 'white', id: 3, hover: false, og_speed: 0.0025 }
+    { rX: 160, rY: 90, speed: 0.006, angle: 1, size: 7, color: '#ffcc70', id: 1, hover: false, og_speed: 0.006 },
+    { rX: 240, rY: 130, speed: 0.004, angle: 2, size: 10, color: '#98ff98', id: 2, hover: false, og_speed: 0.004 },
+    { rX: 320, rY: 180, speed: 0.0025, angle: 3.2, size: 12, color: '#00ffe5', id: 3, hover: false, og_speed: 0.0025 }
 ]
 
 // variables to store screen state
@@ -29,6 +29,7 @@ function resize() {
     canvas.height = window.innerHeight;
 }
 
+// event handler for mouse
 function mousePos(e) {
 
     // grabs position and size of canvas on screen
@@ -77,11 +78,14 @@ function mouseMove(e) {
             canvas.style.cursor = 'pointer';
 
             if (!prev_hover) {
-                console.log('new hover')
+                showProject(p.id, pos.x, pos.y);
             }
 
         } else if (prev_hover) {
-            console.log('done hover')
+            hideProject(p.id);
+            if (hovered_planet === p.id) {
+                hovered_planet = null;
+            }
         }
 
     });
@@ -100,7 +104,7 @@ function mouseLeave(e) {
 
         if (p.hover) {
             p.hover = false;
-            // hide
+            hideProject(p.id);
         }
     });
 
@@ -109,7 +113,7 @@ function mouseLeave(e) {
 
 }
 
-
+// draw orbiting animation
 function draw() {
 
     // clear the canvas before each frame or else it'll get messy
@@ -175,6 +179,36 @@ function draw() {
     // as soon as frame is complete, draw the next one
     requestAnimationFrame(draw);
 }
+
+// reveal project card once planet is hovered
+function showProject(planet_id, pos_x, pos_y) {
+
+    const card = document.getElementById(`project-card-${planet_id}`);
+
+    // position the card near the mouse
+    let card_x = pos_x + 20;
+    let card_y = pos_y - 100;
+
+    // make sure it doesn't go offscreen
+    // card is 350x300px, so if it's position is beyond the edge of the window, move it to the left of the cursor
+    if (card_x + 350 > window.innerWidth) card_x = pos_x - 370;
+    // if card top is above the screen, bump it down
+    if (card_y < 0) card_y = 20;
+    // if bottom of card goes beyond the screen, bump it up
+    if(card_y + 300 > window.innerHeight) card_y = window.innerHeight - 320; 
+
+    // add new position to .css and add show tag to make it visible
+    card.style.left = card_x + 'px';
+    card.style.top = card_y + 'px';
+    card.classList.add('show');
+}
+
+// hide planet card after planet no longer hovered
+function hideProject(planet_id) {
+    const card = document.getElementById(`project-card-${planet_id}`);
+    card.classList.remove('show');
+}
+
 
 // event listeners
 window.addEventListener('resize', resize);
