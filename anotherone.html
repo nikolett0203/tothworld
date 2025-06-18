@@ -1,51 +1,35 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
+    <meta charset='UTF-8'>
+    <title>Toth World</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website</title>
+    
+    <!-- fonts -->
+    <link href="https://fonts.cdnfonts.com/css/positions-by-arixbored" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
-    
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
     <style>
-
-@font-face {
-    font-family: cormorant;
-    src: url(assets/fonts/Cormorant/Cormorant-VariableFont_wght.ttf);
-}
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'DM Sans', sans-serif;
         }
 
-        body {
-            overflow-x: hidden;
-            color: white;
-            font-weight: 200;
-        }
-
-
-        .sky-background {
-            position: fixed;
-            top: 0;
+        .night-sky {
+            position: fixed;  
+            top: 0;    
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, #0a0a2a 0%, #090921 70%, #120a29 100%);
             z-index: -10;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             transition: background 0.5s ease;
         }
 
-        .stars-container {
+        .galaxy {
             position: fixed;
             top: 0;
             left: 0;
@@ -54,116 +38,33 @@
             z-index: -9;
             opacity: 1;
             transition: opacity 1s ease;
-            overflow: hidden;
         }
 
         .star {
-            position: absolute;
             background-color: white;
-            border-radius: 50%;
-        }
-
-        .sun {
-            position: fixed;
-            bottom: -150px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50vh;
-            height: 50vh;
-            background: radial-gradient(circle at center, #fffa77 10%, #ffbe4d 30%, #ff8130 60%, #ff4400 100%);
-            border-radius: 50%;
-            z-index: -8;
-            box-shadow: 0 0 100px 50px rgba(255, 100, 0, 0.7);
-            opacity: 0;
-            /* transition: opacity 1.5s ease, bottom 2s ease, box-shadow 1.5s ease; */
-        }
-
-        .sun-rays {
             position: absolute;
-            top: -50px;
-            left: -50px;
-            width: 75vh;
-            height: 75vh;
-            transform: scale(1.5);
-            background: radial-gradient(circle at center, rgba(255, 222, 0, 0.6) 0%, rgba(255, 170, 0, 0.4) 40%, rgba(255, 170, 0, 0) 70%);
             border-radius: 50%;
-            opacity: 0;
-            z-index: -1;
-            transition: opacity 1s ease;
-        }
-
-        .content {
-            position: relative;
-            z-index: 1;
-            padding: 100px 20px;
-            min-height: 400vh;
-        }
-
-        .section {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        h1 {
-            font-family: Bungee Hairline; 
-            font-size: 3rem;
-            font-weight: 200;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-        }
-
-        p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
-        }
-
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            z-index: 100;
-            background-color: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(5px);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
-        }
-
-        .nav a:hover {
-            color: #ffcc00;
         }
 
         .meteor {
             position: absolute;
-            width: 2px;
-            height: 30px;
-            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
             transform: rotate(45deg);
-            animation: meteor 6s linear infinite;
+            width: 2px;
+            height: 50px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+            animation: meteor 3s linear infinite;
             opacity: 0;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
         }
 
         @keyframes meteor {
@@ -183,288 +84,605 @@
             }
         }
 
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border: 2px solid white;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
+        .seseme-seeds {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            display: flex;
+            gap: 30px;
+            z-index: 10;
+        }
+
+        .seed {
+            font-family: 'Urbanist', sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 2px;
+            position: relative;
             transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
+            text-decoration: none;
         }
 
-        .button:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        .seed:hover {
+            color: white;
         }
 
+        .seed::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+          
+        .seed:hover::after {
+            width: 100%;
+        }
 
+        .bun-top {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
 
+        .main-title {
+            font-family: 'Positions by Arixbored', sans-serif;
+            color: white;
+            font-weight: 200;
+            font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+            letter-spacing: 7px;
+            margin-bottom: 1.5rem;
+            animation: rise 1.5s ease-out;  
+        }
 
+        .main-sub {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            column-gap: 1.5rem;
+            row-gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0 1rem;
+            max-width: calc(100vw - clamp(60px, 7vw, 90px));
+            margin: 0 auto;
+        }
 
+        .m-sub {
+            font-family: 'Urbanist', sans-serif; 
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            color: rgba(255, 255, 255, 0.65);
+            font-weight: 300;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            letter-spacing: 3px;
+            animation: rise 1.5s ease-out;  
+            white-space: nowrap;
+        }
 
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
+        .fries {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: clamp(50px, 6vw, 80px);
+            height: 100vh;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
+        .fry {
+            writing-mode: vertical-lr;
+            text-orientation: mixed;
+            font-family: 'Urbanist', sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 2px;
+            cursor: pointer;
+            margin: clamp(12px, 2vh, 20px) 0;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
 
+        .fry:hover {
+            color: white;
+            transform: translateX(5px);
+        }
 
+        @media (max-width: 600px) {
+            .fries {
+                display: none;
+            }
+        }
+
+        .patty {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            justify-content: flex-start;
+            height: 100vh;
+            text-align: center;
+            scroll-snap-align: start;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        #project-title {
+            margin-top: 100px;
+            font-size: clamp(1.9rem, 4.5vw, 2.7rem);
+            z-index: 2;
+            position: relative;
+        }
+
+        #sun {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #fceea7;
+            box-shadow: 0 0 40px rgba(255, 200, 100, 0.8);
+            z-index: 2;
+        }
+
+        /* Project Card Styles */
+        .project-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            max-width: 350px;
+            min-width: 300px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            opacity: 0;
+            transform: scale(0.8) translateY(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .project-card.show {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+        }
+
+        .project-card h3 {
+            font-family: 'Positions by Arixbored', sans-serif;
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .project-card .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+            justify-content: center;
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            font-family: 'Urbanist', sans-serif;
+        }
+
+        .project-card p {
+            font-family: 'Urbanist', sans-serif;
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .project-link {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-family: 'Urbanist', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .project-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(240, 147, 251, 0.4);
+        }
+
+        .planet-glow {
+            filter: drop-shadow(0 0 20px currentColor);
+        }
+
+        /* Instruction text */
+        .instructions {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Urbanist', sans-serif;
+            font-size: 1rem;
+            text-align: center;
+            z-index: 2;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
     </style>
 </head>
+
 <body>
-    <div class="sky-background"></div>
-    <div class="stars-container" id="stars-container"></div>
-    <div class="sun" id="sun">
-        <div class="sun-rays"></div>
+    <!-- starry sky background -->
+    <div class='night-sky'></div>
+    <div class='galaxy' id='galaxy'></div>
+
+    <!-- navbar -->
+    <div class='seseme-seeds'>
+        <a class='seed' href='#bun-top'>HOME</a>
+        <a class='seed' href='#patty'>PROJECTS</a>
+        <a class='seed' href='#'>ABOUT ME</a>
     </div>
 
-
-
-
-
-
-
-
-    <nav class="nav">
-        <div class="logo">
-            <a href="#">Niki</a>
+    <!-- hero -->
+    <section class='bun-top' id='bun-top'>
+        <h1 class='main-title' id='hero-title'>toth world</h1>
+        <div class='main-sub'>
+            <span class='m-sub'>computer science student</span>
+            <span class='m-sub'>environmental science grad</span>
+            <span class='m-sub'>currently @ GHD</span>
         </div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
+    </section>
 
-    <div class="content">
-        <section id="home" class="section">
-            <h1>nikolett's portfolio</h1>
-            <p>Hi there! I'm a creative professional passionate about design and technology.</p>
-            <a href="#about" class="button">Learn More</a>
-        </section>
-
-        <section id="about" class="section">
-            <h1>About Me</h1>
-            <p>I'm a designer and developer with a passion for creating beautiful digital experiences. With over 5 years of experience in the industry, I've worked on various projects ranging from small business websites to large-scale applications.</p>
-            <a href="#projects" class="button">See My Work</a>
-        </section>
-
-        <section id="projects" class="section">
-            <h1>My Projects</h1>
-            <p>Here are some of the projects I've worked on recently. Each one represents a unique challenge and solution that I'm proud to share.</p>
-            <a href="#contact" class="button">Get In Touch</a>
-        </section>
-
-        <section id="contact" class="section">
-            <h1>Contact Me</h1>
-            <p>Interested in working together? Feel free to reach out to me at example@email.com or through social media.</p>
-            <div>
-                <a href="#" class="button">Email Me</a>
+    <section class='patty' id='patty'>
+        <h2 class='main-title' id='project-title'>projects</h2>
+        <canvas id='canvas'></canvas>
+        <div id='sun'></div>
+        
+        <!-- Project Cards -->
+        <div id='project-card-1' class='project-card'>
+            <h3>🌱 EcoTracker</h3>
+            <div class='tech-stack'>
+                <span class='tech-tag'>React</span>
+                <span class='tech-tag'>Node.js</span>
+                <span class='tech-tag'>MongoDB</span>
+                <span class='tech-tag'>Chart.js</span>
             </div>
-        </section>
-        <section style="height: 300vh;"></section>
-        <section style="height: 500vh;"></section>
+            <p>A comprehensive web application for tracking personal carbon footprint and environmental impact. Features interactive data visualization, goal setting, and community challenges to promote sustainable living habits.</p>
+            <div class='project-links'>
+                <a href='#' class='project-link'>View Demo</a>
+                <a href='#' class='project-link'>GitHub</a>
+            </div>
+        </div>
 
+        <div id='project-card-2' class='project-card'>
+            <h3>🤖 StudyBuddy AI</h3>
+            <div class='tech-stack'>
+                <span class='tech-tag'>Python</span>
+                <span class='tech-tag'>TensorFlow</span>
+                <span class='tech-tag'>Flask</span>
+                <span class='tech-tag'>SQLite</span>
+            </div>
+            <p>An intelligent study companion that uses machine learning to create personalized study schedules, generate practice questions, and adapt to individual learning patterns for optimized academic performance.</p>
+            <div class='project-links'>
+                <a href='#' class='project-link'>Try It</a>
+                <a href='#' class='project-link'>GitHub</a>
+            </div>
+        </div>
+
+        <div id='project-card-3' class='project-card'>
+            <h3>🌊 Ocean Data Viz</h3>
+            <div class='tech-stack'>
+                <span class='tech-tag'>D3.js</span>
+                <span class='tech-tag'>Python</span>
+                <span class='tech-tag'>Pandas</span>
+                <span class='tech-tag'>API</span>
+            </div>
+            <p>Interactive data visualization platform displaying real-time ocean temperature, pH levels, and marine biodiversity data. Combines environmental science expertise with modern web technologies.</p>
+            <div class='project-links'>
+                <a href='#' class='project-link'>Explore</a>
+                <a href='#' class='project-link'>GitHub</a>
+            </div>
+        </div>
+
+        <div class='instructions'>
+            ✨ Hover over the planets to discover my projects ✨
+        </div>
+    </section>
+
+    <!-- side bar -->
+    <div class='fries'>
+        <a class='fry' href='#' target='#'>RESUME</a>
+        <a class='fry' href='https://github.com/nikolett0203' target='_blank'>GITHUB</a>
+        <a class='fry' href='https://www.linkedin.com/in/nikototh/' target='_blank'>LINKEDIN</a>
     </div>
 
     <script>
-        // Create different sized stars with varying brightness
+        // Stars and meteors generation
         function createStars() {
-            const starsContainer = document.getElementById('stars-container');
-            const bigStarsCount = 50;
-            const mediumStarsCount = 150;
-            const smallStarsCount = 300;
+            const galaxy = document.getElementById('galaxy');
+            const numStars = 150;
             
-            // Create big bright stars
-            for (let i = 0; i < bigStarsCount; i++) {
-                createStar(starsContainer, 2, 3, 0.9, 1);
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Random position
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                
+                // Random size
+                const size = Math.random() * 3 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                
+                // Random twinkle animation
+                const delay = Math.random() * 3;
+                star.style.animation = `twinkle ${2 + Math.random() * 2}s ease-in-out infinite ${delay}s`;
+                
+                galaxy.appendChild(star);
             }
-            
-            // Create medium stars
-            for (let i = 0; i < mediumStarsCount; i++) {
-                createStar(starsContainer, 1, 2, 0.7, 0.9);
-            }
-            
-            // Create small dim stars
-            for (let i = 0; i < smallStarsCount; i++) {
-                createStar(starsContainer, 0.5, 1, 0.4, 0.7);
-            }
-            
-            // Create occasional meteors
-            createMeteors(starsContainer, 5);
         }
-        
-        function createStar(container, minSize, maxSize, minOpacity, maxOpacity) {
-            const star = document.createElement('div');
-            const size = minSize + Math.random() * (maxSize - minSize);
-            const opacity = minOpacity + Math.random() * (maxOpacity - minOpacity);
+
+        function createMeteors() {
+            const galaxy = document.getElementById('galaxy');
             
-            star.classList.add('star');
-            star.style.width = `${size}px`;
-            star.style.height = `${size}px`;
-            star.style.top = `${Math.random() * 100}%`;
-            star.style.left = `${Math.random() * 100}%`;
-            star.style.opacity = opacity;
-            star.style.boxShadow = `0 0 ${size * 2}px rgba(255, 255, 255, ${opacity})`;
-            
-            // Add twinkling effect with randomized timing
-            const duration = 3 + Math.random() * 7;
-            const delay = Math.random() * 5;
-            star.style.animation = `twinkle ${duration}s ${delay}s infinite ease-in-out`;
-            
-            container.appendChild(star);
-        }
-        
-        function createMeteors(container, count) {
-            for (let i = 0; i < count; i++) {
+            setInterval(() => {
+                const meteor = document.createElement('div');
+                meteor.className = 'meteor';
+                
+                // Random starting position
+                meteor.style.left = Math.random() * 100 + '%';
+                meteor.style.top = Math.random() * 100 + '%';
+                
+                galaxy.appendChild(meteor);
+                
+                // Remove meteor after animation
                 setTimeout(() => {
-                    const meteor = document.createElement('div');
-                    meteor.classList.add('meteor');
-                    meteor.style.top = `${Math.random() * 30}%`;
-                    meteor.style.left = `${50 + Math.random() * 50}%`;
-                    meteor.style.animationDelay = `${Math.random() * 20}s`;
+                    if (meteor.parentNode) {
+                        meteor.parentNode.removeChild(meteor);
+                    }
+                }, 3000);
+            }, 3000);
+        }
+
+        // Solar system animation
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        const tilt = 0.5;
+        const centerX = () => canvas.width / 2;
+        const centerY = () => canvas.height / 2;
+
+        let animationPaused = false;
+        let hoveredPlanet = null;
+
+        let planets = [
+            { 
+                rX: 160, 
+                rY: 90, 
+                speed: 0.006, 
+                angle: 1, 
+                size: 7, 
+                color: '#ff6b6b', 
+                id: 1,
+                project: 'EcoTracker',
+                hovered: false,
+                originalSpeed: 0.006
+            },
+            { 
+                rX: 240, 
+                rY: 130, 
+                speed: 0.004, 
+                angle: 2, 
+                size: 10, 
+                color: '#4ecdc4', 
+                id: 2,
+                project: 'StudyBuddy AI',
+                hovered: false,
+                originalSpeed: 0.004
+            },
+            { 
+                rX: 320, 
+                rY: 180, 
+                speed: 0.0025, 
+                angle: 3.2, 
+                size: 12, 
+                color: '#45b7d1', 
+                id: 3,
+                project: 'Ocean Data Viz',
+                hovered: false,
+                originalSpeed: 0.0025
+            }
+        ];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function getMousePos(e) {
+            const rect = canvas.getBoundingClientRect();
+            return {
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top
+            };
+        }
+
+        function distance(x1, y1, x2, y2) {
+            return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+        }
+
+        function showProjectCard(planetId, mouseX, mouseY) {
+            const card = document.getElementById(`project-card-${planetId}`);
+            
+            // Position card near mouse but keep it on screen
+            let cardX = mouseX + 20;
+            let cardY = mouseY - 100;
+            
+            // Prevent card from going off screen
+            if (cardX + 350 > window.innerWidth) cardX = mouseX - 370;
+            if (cardY < 0) cardY = 20;
+            if (cardY + 300 > window.innerHeight) cardY = window.innerHeight - 320;
+            
+            card.style.left = cardX + 'px';
+            card.style.top = cardY + 'px';
+            card.classList.add('show');
+        }
+
+        function hideProjectCard(planetId) {
+            const card = document.getElementById(`project-card-${planetId}`);
+            card.classList.remove('show');
+        }
+
+        function handleMouseMove(e) {
+            const mousePos = getMousePos(e);
+            let foundHover = false;
+            
+            planets.forEach(p => {
+                const x = centerX() + p.rX * Math.cos(p.angle);
+                const y = centerY() + p.rY * Math.sin(p.angle) * tilt;
+                
+                const dist = distance(mousePos.x, mousePos.y, x, y);
+                const wasHovered = p.hovered;
+                p.hovered = dist < p.size + 10;
+                
+                if (p.hovered) {
+                    foundHover = true;
+                    canvas.style.cursor = 'pointer';
                     
-                    container.appendChild(meteor);
-                    
-                    // Remove meteor after animation
-                    setTimeout(() => {
-                        meteor.remove();
-                        // Create a new meteor
-                        createMeteors(container, 1);
-                    }, 6000);
-                }, i * 3000);
+                    if (!wasHovered) {
+                        showProjectCard(p.id, mousePos.x, mousePos.y);
+                        hoveredPlanet = p.id;
+                    }
+                } else if (wasHovered) {
+                    hideProjectCard(p.id);
+                    if (hoveredPlanet === p.id) {
+                        hoveredPlanet = null;
+                    }
+                }
+            });
+            
+            if (!foundHover) {
+                canvas.style.cursor = 'default';
             }
         }
 
-        // Add twinkling animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes twinkle {
-                0%, 100% { opacity: 1; transform: scale(1); }
-                50% { opacity: 0.3; transform: scale(0.8); }
-            }
-            
-            @keyframes cloudMove {
-                0% { background-position: 0px 0px; }
-                100% { background-position: 1000px 0px; }
-            }
-        `;
-        document.head.appendChild(style);
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Change background color based on scroll position
-        window.addEventListener('scroll', function() {
-            const scrollPosition = window.scrollY;
-            const documentHeight = document.body.scrollHeight - window.innerHeight;
-            const scrollPercentage = scrollPosition / documentHeight;
-            
-            const skyBackground = document.querySelector('.sky-background');
-            const starsContainer = document.getElementById('stars-container');
-            const sun = document.getElementById('sun');
-            const sunRays = document.querySelector('.sun-rays');
-            
-            // Night sky to dawn to sunrise
-            if (scrollPercentage < 0.3) {
-                // Night sky (start)
-                const nightProgress = scrollPercentage / 0.3;
-                
-                // Subtle shift in the deep night sky
-                const r1 = Math.round(10 + nightProgress * 15);
-                const g1 = Math.round(10 + nightProgress * 15);
-                const b1 = Math.round(42 + nightProgress * 15);
-                
-                const r2 = Math.round(9 + nightProgress * 15);
-                const g2 = Math.round(9 + nightProgress * 15);
-                const b2 = Math.round(33 + nightProgress * 15);
-                
-                skyBackground.style.background = `linear-gradient(to bottom, 
-                    rgb(${r1}, ${g1}, ${b1}) 0%, 
-                    rgb(${r2}, ${g2}, ${b2}) 70%, 
-                    rgb(${r2 + 10}, ${g2 + 5}, ${b2 + 15}) 100%)`;
-                
-                starsContainer.style.opacity = 1;
-                sun.style.opacity = 0;
-                sun.style.bottom = '-150px';
-                sunRays.style.opacity = 0;
-                
-            } else if (scrollPercentage < 0.6) {
-                // Dawn transition (middle)
-                const dawnProgress = (scrollPercentage - 0.3) / 0.3;
-                
-                // More complex dawn gradient
-                const r1 = Math.round(25 + dawnProgress * (130 - 25));
-                const g1 = Math.round(25 + dawnProgress * (100 - 25));
-                const b1 = Math.round(57 + dawnProgress * (180 - 57));
-                
-                const r2 = Math.round(24 + dawnProgress * (170 - 24));
-                const g2 = Math.round(24 + dawnProgress * (120 - 24));
-                const b2 = Math.round(48 + dawnProgress * (200 - 48));
-                
-                const r3 = Math.round(34 + dawnProgress * (240 - 34));
-                const g3 = Math.round(29 + dawnProgress * (150 - 29));
-                const b3 = Math.round(63 + dawnProgress * (180 - 63));
-                
-                skyBackground.style.background = `linear-gradient(to bottom, 
-                    rgb(${r1}, ${g1}, ${b1}) 0%, 
-                    rgb(${r2}, ${g2}, ${b2}) 70%, 
-                    rgb(${r3}, ${g3}, ${b3}) 100%)`;
-                
-                starsContainer.style.opacity = 1 - dawnProgress * 1.2;
-                sun.style.opacity = dawnProgress * 0.8;
-                sun.style.bottom = `-${150 - dawnProgress * 120}px`;
-                sun.style.boxShadow = `0 0 ${100 + dawnProgress * 50}px ${50 + dawnProgress * 25}px rgba(255, ${100 + dawnProgress * 100}, 0, ${0.7 + dawnProgress * 0.3})`;
-                sunRays.style.opacity = dawnProgress * 0.5;
-                
-            } else {
-                // Sunrise (end)
-                const sunriseProgress = (scrollPercentage - 0.6) / 0.4;
-                
-                // Vibrant sunrise colors
-                const r1 = Math.round(130 + sunriseProgress * (135 - 130));
-                const g1 = Math.round(100 + sunriseProgress * (206 - 100));
-                const b1 = Math.round(180 + sunriseProgress * (250 - 180));
-                
-                const r2 = Math.round(170 + sunriseProgress * (255 - 170));
-                const g2 = Math.round(120 + sunriseProgress * (223 - 120));
-                const b2 = Math.round(200 + sunriseProgress * (180 - 200));
-                
-                const r3 = Math.round(240 + sunriseProgress * (255 - 240));
-                const g3 = Math.round(150 + sunriseProgress * (190 - 150));
-                const b3 = Math.round(180 - sunriseProgress * 80);
-                
-                skyBackground.style.background = `linear-gradient(to bottom, 
-                    rgb(${r1}, ${g1}, ${b1}) 0%, 
-                    rgb(${r2}, ${g2}, ${b2}) 60%, 
-                    rgb(${r3}, ${g3}, ${b3}) 100%)`;
-                
-                starsContainer.style.opacity = 0;
-                sun.style.opacity = 0.8 + sunriseProgress * 0.2;
-                sun.style.bottom = `${-30 + sunriseProgress * 100}px`;
-                sun.style.boxShadow = `0 0 ${150 + sunriseProgress * 100}px ${75 + sunriseProgress * 50}px rgba(255, ${200 - sunriseProgress * 50}, 0, 1)`;
-                sunRays.style.opacity = 0.5 + sunriseProgress * 0.5;
-            }
+            // Draw orbital paths
+            planets.forEach(p => {
+                ctx.beginPath();
+                ctx.ellipse(
+                    centerX(),
+                    centerY(),
+                    p.rX,
+                    p.rY * tilt,
+                    0,
+                    2 * Math.PI,
+                    false
+                );
+                ctx.strokeStyle = p.hovered ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)';
+                ctx.lineWidth = p.hovered ? 2 : 1;
+                ctx.stroke();
+            });
+
+            // Draw planets
+            planets.forEach(p => {
+                const x = centerX() + p.rX * Math.cos(p.angle);
+                const y = centerY() + p.rY * Math.sin(p.angle) * tilt;
+
+                ctx.beginPath();
+                ctx.arc(x, y, p.hovered ? p.size + 2 : p.size, 0, 2 * Math.PI);
+
+                ctx.fillStyle = p.color;
+                ctx.shadowColor = p.color;
+                ctx.shadowBlur = p.hovered ? 25 : 12;
+                ctx.fill();
+
+                // Slow down or stop planet when hovered
+                if (p.hovered) {
+                    p.speed = p.originalSpeed * 0.1; // Slow to 10% speed
+                } else {
+                    p.speed = p.originalSpeed;
+                }
+
+                p.angle += p.speed;
+            });
+
+            requestAnimationFrame(draw);
+        }
+
+        // Event listeners
+        window.addEventListener('resize', resize);
+        canvas.addEventListener('mousemove', handleMouseMove);
+        canvas.addEventListener('mouseleave', () => {
+            planets.forEach(p => {
+                if (p.hovered) {
+                    p.hovered = false;
+                    hideProjectCard(p.id);
+                }
+            });
+            hoveredPlanet = null;
+            canvas.style.cursor = 'default';
         });
 
-
-
-
-
-
-
-
-
-
-
-
-        
-    // Initialize stars on load
-        window.onload = function() {
-            createStars();
-            // Trigger initial scroll effect
-            window.dispatchEvent(new Event('scroll'));
-        };
+        // Initialize
+        resize();
+        createStars();
+        createMeteors();
+        draw();
     </script>
 </body>
 </html>
