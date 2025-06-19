@@ -14,9 +14,9 @@ const centerY = () => canvas.height / 2;
 // define planet attributes
 // rx/y: horizontal/vertical radii of orbit, angle: starting angle of orbit in radians
 let planets = [
-    { rX: 160, rY: 90, speed: 0.006, angle: 1, size: 7, color: '#ffcc70', id: 1, hover: false, og_speed: 0.006 },
-    { rX: 240, rY: 130, speed: 0.004, angle: 2, size: 10, color: '#98ff98', id: 2, hover: false, og_speed: 0.004 },
-    { rX: 320, rY: 180, speed: 0.0025, angle: 3.2, size: 12, color: '#00ffe5', id: 3, hover: false, og_speed: 0.0025 }
+    { rX: 160, rY: 90, speed: 0.006, angle: 1, size: 7, color: '#ffcc70', id: 1, hover: false, og_speed: 0.006, link: 'https://cran.r-project.org/web/packages/RulesTools/index.html' },
+    { rX: 240, rY: 130, speed: 0.004, angle: 2, size: 10, color: '#98ff98', id: 2, hover: false, og_speed: 0.004, link: 'https://www.tunetwin.ca/' },
+    { rX: 320, rY: 180, speed: 0.0025, angle: 3.2, size: 12, color: '#00ffe5', id: 3, hover: false, og_speed: 0.0025, link: 'https://www.google.com/' }
 ]
 
 // variables to store screen state
@@ -112,6 +112,24 @@ function mouseLeave(e) {
     canvas.style.cursor = 'default'
 
 }
+
+function mouseClick(e) {
+
+    const pos = mousePos(e);
+
+    planets.forEach(p => {
+        const x = centerX() + p.rX * Math.cos(p.angle);
+        const y = centerY() + p.rY * Math.sin(p.angle) * tilt;
+
+        const dist = distance(pos.x, pos.y, x, y);
+
+        // open site if clicked within the radius of the planet
+        if (dist < p.size + 10 && p.link) {
+            window.open(p.link, '_blank');
+        }
+    });
+}
+
 
 // draw orbiting animation
 function draw() {
@@ -214,6 +232,7 @@ function hideProject(planet_id) {
 window.addEventListener('resize', resize);
 canvas.addEventListener('mousemove', mouseMove);
 canvas.addEventListener('mouseleave', mouseLeave)
+canvas.addEventListener('click', mouseClick)
 console.log("Added")
 
 export function spawnNebula() {

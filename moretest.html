@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
+    <meta charset='UTF-8'>
+    <title>Toth World</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nikolett Toth - Portfolio</title>
+    
+    <!-- fonts -->
     <link href="https://fonts.cdnfonts.com/css/positions-by-arixbored" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
     <style>
         * {
             margin: 0;
@@ -12,17 +18,9 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #000;
-            color: white;
-            overflow-x: hidden;
-        }
-
-        /* Your existing space background */
         .night-sky {
-            position: fixed;
-            top: 0;
+            position: fixed;  
+            top: 0;    
             left: 0;
             width: 100%;
             height: 100%;
@@ -59,108 +57,114 @@
         }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.3; transform: scale(0.8); }
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
         }
 
         @keyframes meteor {
-            0% { opacity: 0; transform: translateX(0) translateY(0) rotate(45deg); }
-            10% { opacity: 1; }
-            70% { opacity: 1; }
-            100% { opacity: 0; transform: translateX(-200px) translateY(200px) rotate(45deg); }
+            0% {
+                opacity: 0;
+                transform: translateX(0) translateY(0) rotate(45deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            70% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-200px) translateY(200px) rotate(45deg);
+            }
         }
 
-        /* Minimal Template Styles */
-        .minimal-hero {
+        .seseme-seeds {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            display: flex;
+            gap: 30px;
+            z-index: 10;
+        }
+
+        .seed {
+            font-family: 'Urbanist', sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 2px;
+            position: relative;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .seed:hover {
+            color: white;
+        }
+
+        .seed::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+          
+        .seed:hover::after {
+            width: 100%;
+        }
+
+        .bun-top {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            height: 100vh;
             text-align: center;
         }
 
-        /* <div class="minimal-hero">
-        <h1 class="name-large" id="floating-name">toth  world</h1>
-        <p class="subtitle">DEVELOPER · CREATOR · DREAMER</p>
-    </div> */
+        .main-title {
+            font-family: 'Positions by Arixbored', sans-serif;
+            color: white;
+            font-weight: 200;
+            font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+            letter-spacing: 7px;
+            margin-bottom: 1.5rem;
+            animation: rise 1.5s ease-out;  
+        }
 
-        .name-large {
-            font-family: 'Positions by Arixbored', 'Inter', sans-serif;
-            font-size: 5rem;
-            font-weight: 100;
-            letter-spacing: 8px;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1.5s ease-out;    
+        .main-sub {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
+            column-gap: 1.5rem;
+            row-gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0 1rem;
+            max-width: calc(100vw - clamp(60px, 7vw, 90px));
+            margin: 0 auto;
         }
 
-        .floating-letter {
-            display: inline-block;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .subtitle {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.6);
+        .m-sub {
+            font-family: 'Urbanist', sans-serif; 
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            color: rgba(255, 255, 255, 0.65);
+            font-weight: 300;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
             letter-spacing: 3px;
-            margin-bottom: 4rem;
-            animation: fadeInUp 1.5s ease-out 0.3s both;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-            display: flex;
-            justify-content: center;
+            animation: rise 1.5s ease-out;  
+            white-space: nowrap;
         }
 
-        .subtitle .floating-letter {
-            display: inline-block;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-        }
-
-        .scroll-hint {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            animation: bounce 2s infinite;
-        }
-
-        /* Gentle Wave Floating Animations */
-        @keyframes gentleWave1 {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-3px); }
-        }
-
-        @keyframes gentleWave2 {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-4px); }
-        }
-
-        @keyframes gentleWave3 {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-2px); }
-        }
-
-        @keyframes gentleWave4 {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-        }
-
-        @keyframes gentleWave5 {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-3px); }
-        }
-
-        @keyframes gentleWave6 {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-4px); }
-        }
-
-        @keyframes fadeInUp {
+        @keyframes rise {
             from {
                 opacity: 0;
                 transform: translateY(50px);
@@ -171,24 +175,11 @@
             }
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateX(-50%) translateY(0);
-            }
-            40% {
-                transform: translateX(-50%) translateY(-10px);
-            }
-            60% {
-                transform: translateX(-50%) translateY(-5px);
-            }
-        }
-
-        /* Your existing sidebar */
         .fries {
             position: fixed;
             left: 0;
             top: 0;
-            width: 10vw;
+            width: clamp(50px, 6vw, 80px);
             height: 100vh;
             z-index: 10;
             display: flex;
@@ -200,13 +191,13 @@
         .fry {
             writing-mode: vertical-lr;
             text-orientation: mixed;
-            font-family: 'Inter', sans-serif;
-            font-size: 15px;
+            font-family: 'Urbanist', sans-serif;
+            font-size: 16px;
             font-weight: 300;
             color: rgba(255, 255, 255, 0.8);
             letter-spacing: 2px;
             cursor: pointer;
-            margin: 20px 0;
+            margin: clamp(12px, 2vh, 20px) 0;
             transition: all 0.3s ease;
             text-decoration: none;
         }
@@ -216,110 +207,699 @@
             transform: translateX(5px);
         }
 
-        /* Responsive */
+        @media (max-width: 600px) {
+            .fries {
+                display: none;
+            }
+        }
+
+        .patty {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            justify-content: flex-start;
+            height: 100vh;
+            text-align: center;
+            scroll-snap-align: start;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        #project-title {
+            margin-top: 100px;
+            font-size: clamp(1.9rem, 4.5vw, 2.7rem);
+            z-index: 2;
+            position: relative;
+        }
+
+        #sun {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #fceea7;
+            box-shadow: 0 0 40px rgba(255, 200, 100, 0.8);
+            z-index: 2;
+        }
+
+        /* New Minimalist Project Card Styles */
+        .project-card {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            border-radius: 2px;
+            padding: 30px;
+            max-width: 320px;
+            min-width: 280px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transform: scale(0.95) translateY(10px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+            pointer-events: none;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-card.show {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+        }
+
+        .project-card h3 {
+            font-family: 'Positions by Arixbored', sans-serif;
+            font-size: 1.4rem;
+            color: white;
+            margin-bottom: 20px;
+            text-align: left;
+            font-weight: 200;
+            letter-spacing: 2px;
+        }
+
+        .project-card .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 4px 10px;
+            border-radius: 1px;
+            font-size: 0.75rem;
+            font-weight: 300;
+            font-family: 'Urbanist', sans-serif;
+            letter-spacing: 1px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-card p {
+            font-family: 'Urbanist', sans-serif;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.6;
+            margin-bottom: 25px;
+            text-align: left;
+            font-weight: 300;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-start;
+        }
+
+        .project-link {
+            background: transparent;
+            color: white;
+            padding: 8px 0;
+            border-radius: 0;
+            text-decoration: none;
+            font-family: 'Urbanist', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 300;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            letter-spacing: 1px;
+        }
+
+        .project-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        .project-link:hover::after {
+            width: 100%;
+        }
+
+        .project-link:hover {
+            color: rgba(255, 255, 255, 1);
+        }
+
+        .planet-glow {
+            filter: drop-shadow(0 0 20px currentColor);
+        }
+
+        /* Instruction text */
+        .instructions {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Urbanist', sans-serif;
+            font-size: 1rem;
+            text-align: center;
+            z-index: 2;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        /* About Me Section Styles */
+        .about-section {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 120px 60px 80px 60px;
+            scroll-snap-align: start;
+        }
+
+        .about-container {
+            max-width: 1000px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .about-text {
+            text-align: left;
+        }
+
+        .about-title {
+            font-family: 'Positions by Arixbored', sans-serif;
+            color: white;
+            font-weight: 200;
+            font-size: clamp(1.8rem, 3.5vw, 2.2rem);
+            letter-spacing: 7px;
+            margin-bottom: 50px;
+        }
+
+        .about-paragraph {
+            font-family: 'Urbanist', sans-serif;
+            font-size: clamp(0.95rem, 1.1vw, 1rem);
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 2;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            max-width: 500px;
+        }
+
+        .playlist-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-self: center;
+        }
+
+        .playlist-title {
+            font-family: 'Urbanist', sans-serif;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            text-align: center;
+            text-transform: lowercase;
+        }
+
+        .playlist-carousel {
+            position: relative;
+            width: 100%;
+            max-width: 380px;
+            height: 380px;
+            overflow: hidden;
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .playlist-container {
+            display: flex;
+            width: 200%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .playlist-slide {
+            width: 50%;
+            height: 100%;
+            flex-shrink: 0;
+        }
+
+        .playlist-slide iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 35px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.25);
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .dot.active {
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.3);
+        }
+
+        .dot:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 80px;
+                text-align: center;
+            }
+
+            .about-text {
+                text-align: center;
+            }
+
+            .about-paragraph {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+
         @media (max-width: 768px) {
-            .name-large { 
-                font-size: 3rem; 
-                letter-spacing: 4px; 
+            .about-section {
+                padding: 100px 40px 60px 40px;
+            }
+
+            .about-container {
+                gap: 60px;
+            }
+
+            .playlist-carousel {
+                max-width: 100%;
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-section {
+                padding: 80px 20px 40px 20px;
+            }
+
+            .playlist-carousel {
+                height: 320px;
             }
         }
     </style>
 </head>
+
 <body>
-    <div class="night-sky"></div>
-    <div class="galaxy" id="galaxy"></div>
+    <!-- starry sky background -->
+    <div class='night-sky'></div>
+    <div class='galaxy' id='galaxy'></div>
 
-    <!-- Your existing sidebar -->
-    <div class="fries">
-        <a class="fry" href="#" target="#">RESUME</a>
-        <a class="fry" href="https://github.com/nikolett0203" target="_blank">GITHUB</a>
-        <a class="fry" href="https://www.linkedin.com/in/nikototh/" target="_blank">LINKEDIN</a>
+    <!-- navbar -->
+    <div class='seseme-seeds'>
+        <a class='seed' href='#bun-top'>HOME</a>
+        <a class='seed' href='#patty'>PROJECTS</a>
+        <a class='seed' href='#about-me'>ABOUT ME</a>
     </div>
 
-    <!-- Minimal Hero Section -->
-    <div class="minimal-hero">
-        <h1 class="name-large" id="floating-name">toth  world</h1>
-        <p class="subtitle">DEVELOPER · CREATOR · DREAMER</p>
+    <!-- hero -->
+    <section class='bun-top' id='bun-top'>
+        <h1 class='main-title' id='hero-title'>toth world</h1>
+        <div class='main-sub'>
+            <span class='m-sub'>computer science student</span>
+            <span class='m-sub'>environmental science grad</span>
+            <span class='m-sub'>currently @ GHD</span>
+        </div>
+    </section>
+
+    <section class='patty' id='patty'>
+        <h2 class='main-title' id='project-title'>projects</h2>
+        <canvas id='canvas'></canvas>
+        <div id='sun'></div>
+        
+        <!-- Project Cards -->
+        <div id='project-card-1' class='project-card'>
+            <h3>🌱 EcoTracker</h3>
+            <div class='tech-stack'>
+                <span class='tech-tag'>React</span>
+                <span class='tech-tag'>Node.js</span>
+                <span class='tech-tag'>MongoDB</span>
+                <span class='tech-tag'>Chart.js</span>
+            </div>
+            <p>A comprehensive web application for tracking personal carbon footprint and environmental impact. Features interactive data visualization, goal setting, and community challenges to promote sustainable living habits.</p>
+            <div class='project-links'>
+                <a href='#' class='project-link'>View Demo</a>
+                <a href='#' class='project-link'>GitHub</a>
+            </div>
+        </div>
+
+        <div id='project-card-2' class='project-card'>
+            <h3>🤖 StudyBuddy AI</h3>
+            <div class='tech-stack'>
+                <span class='tech-tag'>Python</span>
+                <span class='tech-tag'>TensorFlow</span>
+                <span class='tech-tag'>Flask</span>
+                <span class='tech-tag'>SQLite</span>
+            </div>
+            <p>An intelligent study companion that uses machine learning to create personalized study schedules, generate practice questions, and adapt to individual learning patterns for optimized academic performance.</p>
+            <div class='project-links'>
+                <a href='#' class='project-link'>Try It</a>
+                <a href='#' class='project-link'>GitHub</a>
+            </div>
+        </div>
+
+        <div id='project-card-3' class='project-card'>
+            <h3>🌊 Ocean Data Viz</h3>
+            <div class='tech-stack'>
+                <span class='tech-tag'>D3.js</span>
+                <span class='tech-tag'>Python</span>
+                <span class='tech-tag'>Pandas</span>
+                <span class='tech-tag'>API</span>
+            </div>
+            <p>Interactive data visualization platform displaying real-time ocean temperature, pH levels, and marine biodiversity data. Combines environmental science expertise with modern web technologies.</p>
+            <div class='project-links'>
+                <a href='#' class='project-link'>Explore</a>
+                <a href='#' class='project-link'>GitHub</a>
+            </div>
+        </div>
+
+        <div class='instructions'>
+            ✨ Hover over the planets to discover my projects ✨
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section class='about-section' id='about-me'>
+        <div class='about-container'>
+            <div class='about-text'>
+                <h2 class='about-title'>about me</h2>
+                <p class='about-paragraph'>
+                    I'm a computer science student with a passion for creating meaningful technology that makes a difference. With a background in environmental science, I bring a unique perspective to problem-solving, combining technical expertise with a deep understanding of sustainability and environmental impact. Currently working at GHD, I'm constantly exploring the intersection of technology and environmental stewardship, building solutions that not only function beautifully but also contribute to a better world.
+                </p>
+            </div>
+            
+            <div class='playlist-section'>
+                <h3 class='playlist-title'>🎵 listen to my playlists</h3>
+                <div class='playlist-carousel'>
+                    <div class='playlist-container' id='playlist-container'>
+                        <div class='playlist-slide'>
+                            <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/ca/playlist/chillin/pl.u-WaB8jsv1y9LN"></iframe>
+                        </div>
+                        <div class='playlist-slide'>
+                            <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/ca/playlist/existential-crisis/pl.u-WaBPaUv1y9LN"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class='carousel-dots'>
+                    <div class='dot active' data-slide='0'></div>
+                    <div class='dot' data-slide='1'></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- side bar -->
+    <div class='fries'>
+        <a class='fry' href='#' target='#'>RESUME</a>
+        <a class='fry' href='https://github.com/nikolett0203' target='_blank'>GITHUB</a>
+        <a class='fry' href='https://www.linkedin.com/in/nikototh/' target='_blank'>LINKEDIN</a>
     </div>
-    <div class="scroll-hint">SCROLL TO EXPLORE</div>
 
     <script>
-        // Generate stars (simplified version of your existing code)
-        function generateStars() {
+        // Stars and meteors generation
+        function createStars() {
             const galaxy = document.getElementById('galaxy');
-            const starCount = 200;
+            const numStars = 150;
             
-            for (let i = 0; i < starCount; i++) {
+            for (let i = 0; i < numStars; i++) {
                 const star = document.createElement('div');
-                star.classList.add('star');
+                star.className = 'star';
                 
-                const size = 0.5 + Math.random() * 2;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                star.style.top = `${Math.random() * 100}%`;
-                star.style.left = `${Math.random() * 100}%`;
-                star.style.opacity = 0.3 + Math.random() * 0.7;
+                // Random position
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
                 
-                const duration = 3 + Math.random() * 4;
-                const delay = Math.random() * 5;
-                star.style.animation = `twinkle ${duration}s ${delay}s infinite ease-in-out`;
+                // Random size
+                const size = Math.random() * 3 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                
+                // Random twinkle animation
+                const delay = Math.random() * 3;
+                star.style.animation = `twinkle ${2 + Math.random() * 2}s ease-in-out infinite ${delay}s`;
                 
                 galaxy.appendChild(star);
             }
         }
 
-        // Create gentle wave floating letters
-        function createFloatingLetters() {
-            // Float the name letters with wave effect
-            const nameElement = document.getElementById('floating-name');
-            if (nameElement) {
-                const nameText = nameElement.textContent;
-                nameElement.innerHTML = '';
+        function createMeteors() {
+            const galaxy = document.getElementById('galaxy');
+            
+            setInterval(() => {
+                const meteor = document.createElement('div');
+                meteor.className = 'meteor';
                 
-                for (let i = 0; i < nameText.length; i++) {
-                    const letter = nameText[i];
-                    const span = document.createElement('span');
-                    span.textContent = letter;
-                    span.className = 'floating-letter';
-                    
-                    // Create wave effect with staggered timing
-                    const animationIndex = (i % 6) + 1;
-                    const duration = 4; // Slower, more gentle
-                    const delay = i * 0.3; // More pronounced wave stagger
-                    
-                    span.style.animation = `gentleWave${animationIndex} ${duration}s ease-in-out infinite ${delay}s`;
-                    nameElement.appendChild(span);
-                }
-            }
+                // Random starting position
+                meteor.style.left = Math.random() * 100 + '%';
+                meteor.style.top = Math.random() * 100 + '%';
+                
+                galaxy.appendChild(meteor);
+                
+                // Remove meteor after animation
+                setTimeout(() => {
+                    if (meteor.parentNode) {
+                        meteor.parentNode.removeChild(meteor);
+                    }
+                }, 3000);
+            }, 3000);
+        }
 
-            // Float the subtitle letters with different wave timing
-            const subtitleElement = document.getElementById('floating-subtitle');
-            if (subtitleElement) {
-                const subtitleText = subtitleElement.textContent;
-                subtitleElement.innerHTML = '';
+        // Solar system animation
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        const tilt = 0.5;
+        const centerX = () => canvas.width / 2;
+        const centerY = () => canvas.height / 2;
+
+        let animationPaused = false;
+        let hoveredPlanet = null;
+
+        let planets = [
+            { 
+                rX: 160, 
+                rY: 90, 
+                speed: 0.006, 
+                angle: 1, 
+                size: 7, 
+                color: '#ff6b6b', 
+                id: 1,
+                project: 'EcoTracker',
+                hovered: false,
+                originalSpeed: 0.006
+            },
+            { 
+                rX: 240, 
+                rY: 130, 
+                speed: 0.004, 
+                angle: 2, 
+                size: 10, 
+                color: '#4ecdc4', 
+                id: 2,
+                project: 'StudyBuddy AI',
+                hovered: false,
+                originalSpeed: 0.004
+            },
+            { 
+                rX: 320, 
+                rY: 180, 
+                speed: 0.0025, 
+                angle: 3.2, 
+                size: 12, 
+                color: '#45b7d1', 
+                id: 3,
+                project: 'Ocean Data Viz',
+                hovered: false,
+                originalSpeed: 0.0025
+            }
+        ];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function getMousePos(e) {
+            const rect = canvas.getBoundingClientRect();
+            return {
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top
+            };
+        }
+
+        function distance(x1, y1, x2, y2) {
+            return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+        }
+
+        function showProjectCard(planetId, mouseX, mouseY) {
+            const card = document.getElementById(`project-card-${planetId}`);
+            
+            // Position card near mouse but keep it on screen
+            let cardX = mouseX + 20;
+            let cardY = mouseY - 100;
+            
+            // Prevent card from going off screen
+            if (cardX + 350 > window.innerWidth) cardX = mouseX - 370;
+            if (cardY < 0) cardY = 20;
+            if (cardY + 300 > window.innerHeight) cardY = window.innerHeight - 320;
+            
+            card.style.left = cardX + 'px';
+            card.style.top = cardY + 'px';
+            card.classList.add('show');
+        }
+
+        function hideProjectCard(planetId) {
+            const card = document.getElementById(`project-card-${planetId}`);
+            card.classList.remove('show');
+        }
+
+        function handleMouseMove(e) {
+            const mousePos = getMousePos(e);
+            let foundHover = false;
+            
+            planets.forEach(p => {
+                const x = centerX() + p.rX * Math.cos(p.angle);
+                const y = centerY() + p.rY * Math.sin(p.angle) * tilt;
                 
-                for (let i = 0; i < subtitleText.length; i++) {
-                    const letter = subtitleText[i];
-                    const span = document.createElement('span');
-                    span.textContent = letter;
-                    span.className = 'floating-letter';
+                const dist = distance(mousePos.x, mousePos.y, x, y);
+                const wasHovered = p.hovered;
+                p.hovered = dist < p.size + 10;
+                
+                if (p.hovered) {
+                    foundHover = true;
+                    canvas.style.cursor = 'pointer';
                     
-                    // Slower wave for subtitle
-                    const animationIndex = (i % 6) + 1;
-                    const duration = 5; // Even slower
-                    const delay = i * 0.15; // Subtle wave
-                    
-                    span.style.animation = `gentleWave${animationIndex} ${duration}s ease-in-out infinite ${delay}s`;
-                    subtitleElement.appendChild(span);
+                    if (!wasHovered) {
+                        showProjectCard(p.id, mousePos.x, mousePos.y);
+                        hoveredPlanet = p.id;
+                    }
+                } else if (wasHovered) {
+                    hideProjectCard(p.id);
+                    if (hoveredPlanet === p.id) {
+                        hoveredPlanet = null;
+                    }
                 }
+            });
+            
+            if (!foundHover) {
+                canvas.style.cursor = 'default';
             }
         }
 
-        // Initialize on load
-        window.onload = function() {
-            generateStars();
-            createFloatingLetters();
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw orbital paths
+            planets.forEach(p => {
+                ctx.beginPath();
+                ctx.ellipse(
+                    centerX(),
+                    centerY(),
+                    p.rX,
+                    p.rY * tilt,
+                    0,
+                    2 * Math.PI,
+                    false
+                );
+                ctx.strokeStyle = p.hovered ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)';
+                ctx.lineWidth = p.hovered ? 2 : 1;
+                ctx.stroke();
+            });
+
+            // Draw planets
+            planets.forEach(p => {
+                const x = centerX() + p.rX * Math.cos(p.angle);
+                const y = centerY() + p.rY * Math.sin(p.angle) * tilt;
+
+                ctx.beginPath();
+                ctx.arc(x, y, p.hovered ? p.size + 2 : p.size, 0, 2 * Math.PI);
+
+                ctx.fillStyle = p.color;
+                ctx.shadowColor = p.color;
+                ctx.shadowBlur = p.hovered ? 25 : 12;
+                ctx.fill();
+
+                // Slow down or stop planet when hovered
+                if (p.hovered) {
+                    p.speed = p.originalSpeed * 0.1; // Slow to 10% speed
+                } else {
+                    p.speed = p.originalSpeed;
+                }
+
+                p.angle += p.speed;
+            });
+
+            requestAnimationFrame(draw);
         }
-    </script>
-</body>
-</html>
+
+        // Playlist carousel functionality
+        let currentSlide = 0;
+        const playlistContainer = document.getElementById('playlist-container');
+        const dots = document.querySelectorAll('.dot');
+
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            playlistContainer.style.transform = `translateX(-${currentSlide * 50}%)`;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // Add click event listeners to dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+            });
+        });
+
+        // Event listeners

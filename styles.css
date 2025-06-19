@@ -435,6 +435,18 @@ canvas {
     font-weight: 300;
 }
 
+.instructions {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Urbanist', sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    z-index: 2;
+}
+
 
 
 
