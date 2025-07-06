@@ -83,12 +83,19 @@ export function spawnMoon() {
         const target = document.querySelector('#moon');
         target.innerHTML = svg;
 
+        // create popup
+        const popup = document.createElement('div');
+        popup.className = 'popup';
+        popup.textContent = `Tonight's Lunar Phase: ${phase}`;
+        target.appendChild(popup);
+
+        // add event listeners for hover
+        target.addEventListener('mouseenter', () => { popup.classList.add('show') });
+        target.addEventListener('mouseleave', () => { popup.classList.remove('show') });
+
         // clean up the script after the call
         script.remove();
         delete window.handleMoonPhase;
 
     };
-
 }
-
-

@@ -177,6 +177,7 @@ animation, which is why we need to include the rotate(45deg) again */
   align-items: center;
   margin-bottom: 2rem;
   height: 90px;
+  position: relative;
   animation: rise 1.5s ease-out;
 }
 
@@ -191,6 +192,39 @@ animation, which is why we need to include the rotate(45deg) again */
 .moon:hover .moon-svg {
   transform: scale(1.05);
   filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.7));
+}
+
+.popup {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    z-index: 1000;
+    transform: translateX(-50%);
+
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(20px);
+
+    font-family: 'Urbanist', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+
+    padding: 10px 14px;
+    border-radius: 2px;
+
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+
+    /* prevent text selection */
+    user-select: none;
+    pointer-events: none;
+
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1)
+}
+
+.popup.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0)
 }
 
 .main-title {
@@ -462,8 +496,9 @@ canvas {
     bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.8);
     font-family: 'Urbanist', sans-serif;
+    font-weight: 300;
     font-size: 1rem;
     text-align: center;
     z-index: 2;
