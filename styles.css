@@ -171,6 +171,20 @@ animation, which is why we need to include the rotate(45deg) again */
     text-align: center;
 }
 
+.moon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    height: 80px; 
+    animation: rise 1.5s ease-out; 
+}
+
+.moon-svg {
+    height: 100%;
+    width: auto;
+}
+
 .main-title {
     font-family: 'Positions by Arixbored', sans-serif;
     color: white;
