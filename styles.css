@@ -172,17 +172,25 @@ animation, which is why we need to include the rotate(45deg) again */
 }
 
 .moon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 2rem;
-    height: 80px; 
-    animation: rise 1.5s ease-out; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  height: 90px;
+  animation: rise 1.5s ease-out;
 }
 
 .moon-svg {
-    height: 100%;
-    width: auto;
+  height: 100%;
+  width: auto;
+  transform: scale(1);
+  filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0));
+  transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+}
+
+.moon:hover .moon-svg {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.7));
 }
 
 .main-title {
