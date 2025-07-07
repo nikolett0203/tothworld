@@ -4,6 +4,24 @@
     box-sizing: border-box;
 }
 
+.fade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.2s ease;
+    z-index: 0;
+}
+
+.fade.visible {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 1;
+}
+
 .night-sky {
     /* sky shouldn't move with scroll */
     position: fixed;  
@@ -159,6 +177,11 @@ animation, which is why we need to include the rotate(45deg) again */
     width: 100%;
 }
 
+.seed.active::after {
+    width: 100%;
+}
+
+
 /********************************* HERO SECTION *********************************/
 
 .bun-top {
@@ -196,7 +219,7 @@ animation, which is why we need to include the rotate(45deg) again */
 
 .popup {
     position: absolute;
-    top: -50px;
+    top: -70px;
     left: 50%;
     z-index: 1000;
     transform: translateX(-50%);
