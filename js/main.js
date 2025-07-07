@@ -46,14 +46,14 @@ function showSection(index) {
     // fade out of current section
     sections[current].classList.remove('visible');
 
+    // remove currently selected nav link
+    document.querySelectorAll('.seed').forEach(link => link.classList.remove('active'));
+
     // wait 800ms for the fade-out before fading in to next section
     setTimeout(() => {
         sections[index].classList.add('visible');
         current = index;
         transition = false;
-
-        // remove currently selected nav link
-        document.querySelectorAll('.seed').forEach(link => link.classList.remove('active'));
 
         // highlight new nav link
         const active_section = sections[index].id;
@@ -63,7 +63,7 @@ function showSection(index) {
             active_link.classList.add('active');
         }
 
-    }, 800);
+    }, 1000);
 }
 
 
@@ -148,5 +148,5 @@ window.addEventListener('DOMContentLoaded', () => {
     // mark initial nav link as active
     const active_link = document.querySelector(`.seed[href="#${sections[current].id}"]`);
     if (active_link) active_link.classList.add('active');
-    
+
 });

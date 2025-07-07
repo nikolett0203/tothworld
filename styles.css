@@ -12,7 +12,7 @@
     height: 100vh;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 1.2s ease;
+    transition: opacity 1.4s ease-in-out;
     z-index: 0;
 }
 
@@ -296,6 +296,21 @@ animation, which is why we need to include the rotate(45deg) again */
     white-space: nowrap;
 }
 
+.scroll-hint {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    text-align: center;
+    z-index: 2;    
+
+    animation: bounce 4s ease-in-out infinite;
+}
+
 @keyframes float {
     0%, 100% {transform: translateY(0px);}
     50% {transform: translateY(-6px);}
@@ -338,6 +353,15 @@ animation, which is why we need to include the rotate(45deg) again */
         transform: translateY(0);
     }
 
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(10px);
+    }
 }
 
 /********************************* SIDEBAR *********************************/
