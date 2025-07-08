@@ -1,206 +1,329 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Moon Phase SVGs</title>
-  <style>
-    body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      padding: 40px;
-      margin: 0;
-      color: white;
-    }
+    <meta charset='UTF-8'>
+    <title>About Me Section</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- fonts -->
+    <link href="https://fonts.cdnfonts.com/css/positions-by-arixbored" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: center;
-    }
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            font-family: 'Urbanist', sans-serif;
+        }
 
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 300;
-      letter-spacing: 4px;
-      margin-bottom: 40px;
-      text-transform: lowercase;
-    }
+        /* About Me Section */
+        .lettuce {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 80px 40px;
+            text-align: center;
+            scroll-snap-align: start;
+        }
 
-    .moon-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px;
-      margin-bottom: 40px;
-    }
+        .about-title {
+            font-family: 'Positions by Arixbored', sans-serif;
+            color: white;
+            font-weight: 200;
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            letter-spacing: 7px;
+            margin-bottom: 3rem;
+            animation: rise 1.5s ease-out;
+        }
 
-    .moon-item {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 30px;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+        .about-description {
+            font-family: 'Urbanist', sans-serif;
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-bottom: 4rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            animation: rise 1.5s ease-out 0.2s both;
+        }
 
-    .moon-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
+        /* Playlist Card */
+        .playlist-card {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            animation: rise 1.5s ease-out 0.4s both;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .moon-svg {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 20px;
-      filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
-    }
+        .playlist-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            gap: 15px;
+        }
 
-    .moon-name {
-      font-size: 1.1rem;
-      font-weight: 400;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-    }
+        .playlist-title {
+            font-family: 'Urbanist', sans-serif;
+            font-size: 1.5rem;
+            color: white;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
 
-    .moon-description {
-      font-size: 0.9rem;
-      opacity: 0.8;
-      line-height: 1.4;
-    }
+        .music-note {
+            font-size: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
 
-    .size-comparison {
-      margin-top: 60px;
-      padding: 40px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
+        .playlist-container {
+            position: relative;
+            width: 100%;
+            height: 150px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
 
-    .size-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 40px;
-      margin: 20px 0;
-      flex-wrap: wrap;
-    }
+        .playlist-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+            background: transparent;
+        }
 
-    .size-label {
-      font-size: 1rem;
-      letter-spacing: 2px;
-      opacity: 0.9;
-      min-width: 100px;
-    }
-  </style>
+        .playlist-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .control-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 12px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 300;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+        }
+
+        .control-btn:active {
+            transform: translateY(0);
+        }
+
+        .song-info {
+            text-align: center;
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+
+        .song-title {
+            font-family: 'Urbanist', sans-serif;
+            font-size: 1rem;
+            color: white;
+            font-weight: 400;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .song-number {
+            font-family: 'Urbanist', sans-serif;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Animations */
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .lettuce {
+                padding: 60px 20px;
+            }
+            
+            .playlist-card {
+                max-width: 90%;
+                padding: 25px;
+            }
+            
+            .playlist-controls {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .song-info {
+                margin: 0;
+            }
+            
+            .control-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <div class="container">
-    <h1>Moon Phase SVGs</h1>
+    <!-- About Me Section -->
+    <section class='lettuce' id='lettuce'>
+        <h2 class='about-title'>about me</h2>
+        
+        <p class='about-description'>
+            Hey there! I'm a computer science student with a passion for creating beautiful, functional digital experiences. 
+            When I'm not coding, you'll find me exploring the intersection of technology and environmental science, 
+            or diving deep into new programming challenges. I believe in building things that matter and making 
+            the web a more interesting place, one project at a time.
+        </p>
+        
+        <div class='playlist-card'>
+            <div class='playlist-header'>
+                <span class='music-note'>🎵</span>
+                <h3 class='playlist-title'>my current vibes</h3>
+                <span class='music-note'>🎵</span>
+            </div>
+            
+            <div class='playlist-container'>
+                <iframe 
+                    id='playlist-iframe'
+                    class='playlist-iframe'
+                    allow="autoplay *; encrypted-media *;" 
+                    frameborder="0" 
+                    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
+                    src="https://embed.music.apple.com/ca/album/funny-papers/1780891320?i=1780891675">
+                </iframe>
+            </div>
+            
+            <div class='playlist-controls'>
+                <button class='control-btn' id='prev-btn'>
+                    <span>←</span>
+                    <span>Previous</span>
+                </button>
+                
+                <div class='song-info'>
+                    <div class='song-title' id='song-title'>Funny Papers</div>
+                    <div class='song-number' id='song-number'>1 of 3</div>
+                </div>
+                
+                <button class='control-btn' id='next-btn'>
+                    <span>Next</span>
+                    <span>→</span>
+                </button>
+            </div>
+        </div>
+    </section>
 
-    <div class="moon-grid">
-      <div class="moon-item">
-        <svg class="moon-svg" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="45" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-        </svg>
-        <div class="moon-name">New Moon</div>
-        <div class="moon-description">0% illuminated<br>Moon between Earth & Sun</div>
-      </div>
+    <script>
+        // Playlist data
+        const playlist = [
+            {
+                title: "Funny Papers",
+                src: "https://embed.music.apple.com/ca/album/funny-papers/1780891320?i=1780891675"
+            },
+            {
+                title: "Ladders",
+                src: "https://embed.music.apple.com/ca/album/ladders/1408996052?i=1408996249"
+            },
+            {
+                title: "Rush Hour",
+                src: "https://embed.music.apple.com/ca/album/rush-hour/1025255443?i=1025255447"
+            }
+        ];
 
-      <div class="moon-item">
-        <svg class="moon-svg" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="45" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-            <ellipse cx="57" cy="50" rx="42" ry="45" fill="white" opacity="0.9"/>
-        </svg>
-        <div class="moon-name">Waxing Crescent</div>
-        <div class="moon-description">1-49% illuminated<br>Growing towards first quarter</div>
-      </div>
+        let currentSongIndex = 0;
 
-      <div class="moon-item">
-        <svg class="moon-svg" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="45" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-          <path d="M50,5 A45,45 0 0,1 50,95 Z" fill="white" opacity="0.9"/>
-        </svg>
-        <div class="moon-name">First Quarter</div>
-        <div class="moon-description">50% illuminated<br>Right half visible</div>
-      </div>
+        // DOM elements
+        const iframe = document.getElementById('playlist-iframe');
+        const songTitle = document.getElementById('song-title');
+        const songNumber = document.getElementById('song-number');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
 
-      <div class="moon-item">
-        <svg class="moon-svg" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="45" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-          <path d="M50,5 A45,45 0 0,1 50,95 A35,45 0 0,0 50,5" fill="white" opacity="0.9"/>
-        </svg>
-        <div class="moon-name">Waxing Gibbous</div>
-        <div class="moon-description">51-99% illuminated<br>Growing towards full moon</div>
-      </div>
+        // Update song display
+        function updateSong() {
+            const song = playlist[currentSongIndex];
+            iframe.src = song.src;
+            songTitle.textContent = song.title;
+            songNumber.textContent = `${currentSongIndex + 1} of ${playlist.length}`;
+        }
 
-      <div class="moon-item">
-        <svg class="moon-svg" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="45" fill="white" opacity="0.9"/>
-        </svg>
-        <div class="moon-name">Full Moon</div>
-        <div class="moon-description">100% illuminated<br>Fully visible disk</div>
-      </div>
+        // Previous song
+        prevBtn.addEventListener('click', () => {
+            currentSongIndex = (currentSongIndex - 1 + playlist.length) % playlist.length;
+            updateSong();
+        });
 
-      <div class="moon-item">
-        <svg class="moon-svg" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="45" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-          <path d="M50,5 A45,45 0 0,0 50,95 A35,45 0 0,1 50,5" fill="white" opacity="0.9"/>
-        </svg>
-        <div class="moon-name">Waning Gibbous</div>
-        <div class="moon-description">51-99% illuminated<br>Shrinking from full moon</div>
-      </div>
+        // Next song
+        nextBtn.addEventListener('click', () => {
+            currentSongIndex = (currentSongIndex + 1) % playlist.length;
+            updateSong();
+        });
 
-      <div class="moon-item">
-        <svg class="moon-svg" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="45" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-          <path d="M50,5 A45,45 0 0,0 50,95 Z" fill="white" opacity="0.9"/>
-        </svg>
-        <div class="moon-name">Last Quarter</div>
-        <div class="moon-description">50% illuminated<br>Left half visible</div>
-      </div>
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                prevBtn.click();
+            } else if (e.key === 'ArrowRight') {
+                nextBtn.click();
+            }
+        });
 
-      <div class="moon-item">
-        <svg class="moon-svg" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="45" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-            <ellipse cx="43" cy="50" rx="42" ry="45" fill="white" opacity="0.9"/>
-        </svg>
-          
-          
-          
-        <div class="moon-name">Waning Crescent</div>
-        <div class="moon-description">1-49% illuminated<br>Shrinking towards new moon</div>
-      </div>
-    </div>
-
-    <div class="size-comparison">
-      <h2 style="margin-bottom: 30px; font-weight: 300;">Size Variations</h2>
-
-      <div class="size-row">
-        <div class="size-label">60px</div>
-        <svg width="60" height="60" viewBox="0 0 100 100" style="filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));">
-          <circle cx="50" cy="50" r="45" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-          <path d="M50,5 A45,45 0 0,1 50,95 A15,45 0 0,0 50,5" fill="white" opacity="0.9"/>
-        </svg>
-      </div>
-
-      <div class="size-row">
-        <div class="size-label">80px</div>
-        <svg width="80" height="80" viewBox="0 0 100 100" style="filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));">
-          <circle cx="50" cy="50" r="45" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-          <path d="M50,5 A45,45 0 0,1 50,95 A15,45 0 0,0 50,5" fill="white" opacity="0.9"/>
-        </svg>
-      </div>
-
-      <div class="size-row">
-        <div class="size-label">100px</div>
-        <svg width="100" height="100" viewBox="0 0 100 100" style="filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));">
-          <circle cx="50" cy="50" r="45" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-          <path d="M50,5 A45,45 0 0,1 50,95 A15,45 0 0,0 50,5" fill="white" opacity="0.9"/>
-        </svg>
-      </div>
-    </div>
-  </div>
+        // Initialize
+        updateSong();
+    </script>
 </body>
 </html>

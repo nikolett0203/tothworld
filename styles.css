@@ -552,7 +552,87 @@ canvas {
 
 }
 
+/********************************* ABOUT ME *********************************/
 
+.bun-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 
+    /* use min-height instead of height in case of mobile wrapping / longer text */
+    height: 100vh;
+    text-align: center;
+}
 
+#about-title {
+    margin-top: 100px;
+    font-size: clamp(1.9rem, 4.5vw, 2.7rem);
+}
 
+.constellation-boundary {
+    /* relative positioning so we can control star placement */
+    position: relative;
+
+    width: 800px;
+    height: 600px;
+    max-width: 85vw;
+    max-height: 70vh;
+
+    margin: 70px auto 0 auto;
+}
+
+.dipper {
+    position: absolute;
+    z-index: 10;
+
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+
+    background: #fceea7;
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.9);
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.dipper:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+}
+
+#dubhe {
+    top: 20%;
+    left: 89.5%;
+}
+
+#merak {
+    top: 43.33%;
+    left: 87%;
+}
+
+#phecda {
+    top: 45%;
+    left: 60.75%;
+}
+
+#megrez {
+    top: 23.33%;
+    left: 55%;
+}
+
+#alioth {
+    top: 20%;
+    left: 36.25%;
+}
+
+#mizar {
+    top: 15.83%;
+    left: 20.25%;
+}
+
+#alkaid {
+    top: 21.67%;
+    left: 5%;
+}

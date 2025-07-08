@@ -1,54 +1,416 @@
 <!DOCTYPE html>
 <html lang='en'>
-
 <head>
     <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Toth World</title>
-    <link href='styles.css' rel='stylesheet'> 
-
+    <title>About Me Section</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- fonts -->
+    <link href="https://fonts.cdnfonts.com/css/positions-by-arixbored" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            font-family: 'Urbanist', sans-serif;
+        }
+
+        /* About Me Section */
+        .lettuce {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 80px 40px;
+            text-align: center;
+            scroll-snap-align: start;
+            overflow: hidden;
+        }
+
+        /* Floating particles for space theme */
+        .lettuce::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                        radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+            animation: drift 20s linear infinite;
+            pointer-events: none;
+        }
+
+        .about-title {
+            font-family: 'Positions by Arixbored', sans-serif;
+            color: white;
+            font-weight: 200;
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            letter-spacing: 7px;
+            margin-bottom: 3rem;
+            animation: rise 1.5s ease-out;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-description {
+            font-family: 'Urbanist', sans-serif;
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-bottom: 4rem;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            animation: rise 1.5s ease-out 0.2s both;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Playlist Card */
+        .playlist-card {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(25px);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 350px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            animation: rise 1.5s ease-out 0.4s both, float 6s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .playlist-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+            animation: rotate 15s linear infinite;
+            pointer-events: none;
+        }
+
+        .playlist-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            gap: 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .playlist-title {
+            font-family: 'Urbanist', sans-serif;
+            font-size: 1.1rem;
+            color: white;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .music-note {
+            font-size: 1.1rem;
+            animation: float 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+        }
+
+        .music-note:nth-child(3) {
+            animation-delay: 2s;
+        }
+
+        .playlist-container {
+            position: relative;
+            width: 100%;
+            height: 80px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            transform: scale(0.95);
+            transform-origin: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            z-index: 2;
+        }
+
+        .playlist-iframe {
+            width: 100%;
+            height: 152px;
+            border: none;
+            border-radius: 12px;
+            background: transparent;
+            transform: translateY(-36px);
+        }
+
+        .playlist-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .control-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 10px 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 300;
+            font-size: 0.8rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(15px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 80px;
+            justify-content: center;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .control-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .song-info {
+            text-align: center;
+            min-width: 140px;
+        }
+
+        .song-title {
+            font-family: 'Urbanist', sans-serif;
+            font-size: 0.9rem;
+            color: white;
+            font-weight: 300;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .song-number {
+            font-family: 'Urbanist', sans-serif;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Animations */
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        @keyframes drift {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+            100% {
+                transform: translateX(-100px) translateY(-100px);
+            }
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .lettuce {
+                padding: 60px 20px;
+            }
+            
+            .playlist-card {
+                max-width: 90%;
+                padding: 20px;
+            }
+            
+            .playlist-container {
+                height: 100px;
+                transform: scale(0.8);
+            }
+            
+            .playlist-controls {
+                gap: 20px;
+            }
+            
+            .control-btn {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+                min-width: 60px;
+            }
+            
+            .song-info {
+                min-width: 100px;
+            }
+            
+            .song-title {
+                font-size: 0.8rem;
+            }
+            
+            .song-number {
+                font-size: 0.65rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
-
-    <div class='night-sky'></div>
-    <div class='galaxy' id='galaxy'></div>
-
-    <div class='seseme-seeds'>
-        <a class='seed' href='#'>HOME</a>
-        <a class='seed' href='#'>PROJECTS</a>
-        <a class='seed' href='#'>ABOUT ME</a>
-    </div>
-
-    <div class='bun-top'>
-        <div class='bun-ingredients'>
-            <!-- xMidYMid centers svg in x and y directions; meet scales it to fit inside container while keeping aspect ratio -->
-            <svg class="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" preserveAspectRatio="xMidYMid meet">
-                <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"/>
-            </svg>
-
-            <h1 class='title'>toth world</h1>
-
-            <div class='subtitle'>
-                <span class='subtitle-item'>computer science student</span>
-                <span class='subtitle-item'>environmental science graduate</span>
-                <span class='subtitle-item'>currently @ GHD</span>
+    <!-- About Me Section -->
+    <section class='lettuce' id='lettuce'>
+        <h2 class='about-title'>about me</h2>
+        
+        <p class='about-description'>
+            Hey there! I'm a computer science student with a passion for creating beautiful, functional digital experiences. 
+            When I'm not coding, you'll find me exploring the intersection of technology and environmental science, 
+            or diving deep into new programming challenges. I believe in building things that matter and making 
+            the web a more interesting place, one project at a time.
+        </p>
+        
+        <div class='playlist-card'>
+            <div class='playlist-header'>
+                <span class='music-note'>🎵</span>
+                <h3 class='playlist-title'>my current vibes</h3>
+                <span class='music-note'>🎵</span>
+            </div>
+            
+            <div class='playlist-container'>
+                <iframe 
+                    id='playlist-iframe'
+                    class='playlist-iframe'
+                    style="border-radius:12px" 
+                    src="https://open.spotify.com/embed/track/7BcOUi4FQ3wBLmNTW0yfCR?utm_source=generator&theme=0" 
+                    width="100%" 
+                    height="152" 
+                    frameBorder="0" 
+                    allowfullscreen="" 
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                    loading="lazy">
+                </iframe>
+            </div>
+            
+            <div class='playlist-controls'>
+                <button class='control-btn' id='prev-btn'>
+                    <span>←</span>
+                    <span>Previous</span>
+                </button>
+                
+                <div class='song-info'>
+                    <div class='song-title' id='song-title'>Track 1</div>
+                    <div class='song-number' id='song-number'>1 of 2</div>
+                </div>
+                
+                <button class='control-btn' id='next-btn'>
+                    <span>Next</span>
+                    <span>→</span>
+                </button>
             </div>
         </div>
-    </div>
-      
-    <div class='fries'>
-        <a class='fry' href=# target=# >RESUME</a>
-        <a class='fry' href='https://github.com/nikolett0203' target='_blank'>GITHUB</a>
-        <a class='fry' href='https://www.linkedin.com/in/nikototh/' target='_blank'>LINKEDIN</a>
-    </div>
+    </section>
 
-    <script type="module" src="js/main.js"></script>
+    <script>
+        // Playlist data - Updated for Spotify
+        const playlist = [
+            {
+                title: "Track 1",
+                src: "https://open.spotify.com/embed/track/7BcOUi4FQ3wBLmNTW0yfCR?utm_source=generator&theme=0"
+            },
+            {
+                title: "Track 2", 
+                src: "https://open.spotify.com/embed/track/01z2fBGB8Hl3Jd3zXe4IXR?utm_source=generator&theme=0"
+            }
+        ];
 
+        let currentSongIndex = 0;
+
+        // DOM elements
+        const iframe = document.getElementById('playlist-iframe');
+        const songTitle = document.getElementById('song-title');
+        const songNumber = document.getElementById('song-number');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        // Update song display
+        function updateSong() {
+            const song = playlist[currentSongIndex];
+            iframe.src = song.src;
+            songTitle.textContent = song.title;
+            songNumber.textContent = `${currentSongIndex + 1} of ${playlist.length}`;
+        }
+
+        // Previous song
+        prevBtn.addEventListener('click', () => {
+            currentSongIndex = (currentSongIndex - 1 + playlist.length) % playlist.length;
+            updateSong();
+        });
+
+        // Next song
+        nextBtn.addEventListener('click', () => {
+            currentSongIndex = (currentSongIndex + 1) % playlist.length;
+            updateSong();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                prevBtn.click();
+            } else if (e.key === 'ArrowRight') {
+                nextBtn.click();
+            }
+        });
+
+        // Initialize
+        updateSong();
+    </script>
 </body>
-
 </html>
