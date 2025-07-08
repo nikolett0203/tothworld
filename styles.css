@@ -548,7 +548,7 @@ canvas {
     font-weight: 300;
     font-size: 1rem;
     text-align: center;
-    z-index: 0;
+    z-index: 1;
 
 }
 
@@ -629,6 +629,7 @@ canvas {
 #mizar {
     top: 15.83%;
     left: 20.25%;
+
 }
 
 #alkaid {
@@ -682,7 +683,7 @@ canvas {
 
 .sometimes-u-gotta-popout h3 {
     font-family: 'Urbanist', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: white;
     margin-bottom: 20px;
     text-align: center;
@@ -696,6 +697,14 @@ canvas {
     color: rgba(255, 255, 255, 0.75);
     line-height: 1.6;
     margin-bottom: 25px;
-    text-align: left;
+    text-align: center;
     font-weight: 300;
+}
+
+/* custom width for playlist one */
+#alioth .sometimes-u-gotta-popout {
+    max-width: 800px;
+    min-width: 340px;
+    padding: 30px 20px;
+    text-align: center;
 }

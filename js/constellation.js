@@ -39,12 +39,15 @@ export function spawnConstellation(){
                     
                     // position very close to -- 25px below and 10px to the side
                     popup.style.top = `25px`;
+                    popup.style.zIndex = '999';
                     
                     // position left or right based on star ID
                     if (starId === 'dubhe') {
                         popup.style.left = `-290px`;
                         popup.style.top = `-180px`;
-
+                    } else if (starId === 'alioth') {
+                        popup.style.top = `-180px`;
+                        popup.style.left = `25px`;
                     } else if (starId === 'merak' || starId === 'phecda' || starId === 'megrez') {
                         // position to the left
                         popup.style.left = `-290px`; // popup width (280px) + 10px spacing
