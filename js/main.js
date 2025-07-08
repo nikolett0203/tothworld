@@ -2,6 +2,7 @@ import { spawnGalaxy } from './stars.js';
 import { zeroG } from './title.js';
 import { spawnNebula } from './nebula.js';
 import { spawnMoon } from './moon.js';
+import { spawnConstellation } from './constellation.js';
 
 
 
@@ -141,6 +142,7 @@ window.addEventListener('DOMContentLoaded', () => {
     zeroG();
     spawnNebula();
     spawnMoon();
+    spawnConstellation();
 
     // make the current section fade into view
     sections[current].classList.add('visible');

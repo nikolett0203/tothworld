@@ -548,7 +548,7 @@ canvas {
     font-weight: 300;
     font-size: 1rem;
     text-align: center;
-    z-index: 2;
+    z-index: 0;
 
 }
 
@@ -583,7 +583,7 @@ canvas {
 
 .dipper {
     position: absolute;
-    z-index: 10;
+    z-index: 1;
 
     height: 15px;
     width: 15px;
@@ -598,8 +598,7 @@ canvas {
 }
 
 .dipper:hover {
-    transform: scale(1.2);
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.95);
 }
 
 #dubhe {
@@ -635,4 +634,68 @@ canvas {
 #alkaid {
     top: 21.67%;
     left: 5%;
+}
+
+.sometimes-u-gotta-popout {
+
+     /* absolute position so we can place it wherever we want on the page (near the mouse) */
+    position: absolute;
+
+    z-index: 999;
+    isolation: isolate;
+
+    /* blur whatever is behind the frame for a frosted glass effect */
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(20px);
+
+    border-radius: 2px;
+    padding: 30px;
+    max-width: 320px;
+    min-width: 280px;
+
+    /* faint border for ethereal effect */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    /* starts off invisible but we'll change this with js */
+    opacity: 0;
+
+    /* also slightly shrunken and down so it can rise and grow when it appears */
+    transform: scale(0.95) translateY(10px);
+
+    /* cubic-bezier starts slow, then accelerates, then eases again */
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    z-index: 2;
+    pointer-events: none;
+
+    /* soft shadow for depth */
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+.sometimes-u-gotta-popout.show {
+    opacity: 1;
+    visibility: visible;
+
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+}
+
+.sometimes-u-gotta-popout h3 {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 200;
+    letter-spacing: 2px;
+}
+
+.sometimes-u-gotta-popout p {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
+    margin-bottom: 25px;
+    text-align: left;
+    font-weight: 300;
 }
