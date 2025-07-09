@@ -610,7 +610,7 @@ canvas {
         justify-content: center;
         gap: 40px;
         margin-top: 7vh;
-        margin-bottom: 7vh;
+        margin-bottom: 10vh;
     }
 
     /* forward/back buttons */
