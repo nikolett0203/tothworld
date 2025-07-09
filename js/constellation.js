@@ -38,23 +38,21 @@ export function spawnConstellation(){
                     const starId = star.id;
                     
                     // position very close to -- 25px below and 10px to the side
-                    popup.style.top = `25px`;
-                    popup.style.zIndex = '999';
+
                     
                     // position left or right based on star ID
                     if (starId === 'dubhe') {
-                        popup.style.left = `-290px`;
+                        popup.style.left = `-450px`;
                         popup.style.top = `-180px`;
-                    } else if (starId === 'alioth') {
-                        popup.style.top = `-180px`;
-                        popup.style.left = `25px`;
                     } else if (starId === 'merak' || starId === 'phecda' || starId === 'megrez') {
                         // position to the left
-                        popup.style.left = `-290px`; // popup width (280px) + 10px spacing
+                        popup.style.left = `-320px`; // popup width (300px) + 20px spacing
+                        popup.style.top = `-140px`;
                         popup.style.transform = 'translateX(0)';
                     } else {
                         // position to right
                         popup.style.left = `25px`;
+                        popup.style.top = `-140px`;
                         popup.style.transform = 'translateX(0)';
                     }
                     
