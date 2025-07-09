@@ -583,7 +583,6 @@ canvas {
 
 .dipper {
     position: absolute;
-    z-index: 1;
 
     height: 15px;
     width: 15px;
@@ -666,7 +665,6 @@ canvas {
     /* cubic-bezier starts slow, then accelerates, then eases again */
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 
-    z-index: 2;
     pointer-events: none;
 
     /* soft shadow for depth */
