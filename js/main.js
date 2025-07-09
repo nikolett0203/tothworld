@@ -3,6 +3,7 @@ import { zeroG } from './title.js';
 import { spawnNebula } from './nebula.js';
 import { spawnMoon } from './moon.js';
 import { spawnConstellation } from './constellation.js';
+import { heatDeath } from './heatdeathoftheuniverse.js';
 
 
 
@@ -140,7 +141,12 @@ window.addEventListener('DOMContentLoaded', () => {
     // set up the background and everything
     spawnGalaxy();
     zeroG();
-    spawnNebula();
+    if (window.innerWidth < 600) {
+        heatDeath();
+    } else {
+        spawnNebula();
+    }
+
     spawnMoon();
     spawnConstellation();
 

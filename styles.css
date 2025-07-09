@@ -552,6 +552,99 @@ canvas {
 
 }
 
+/* no orbit animation on small screens */
+@media (max-width: 600px) {
+
+    .patty {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    canvas, #sun, .instructions {
+        /* don't need instructions or sun for small screens */
+        display: none;
+    }
+
+    /* !important overrides existing card styles */
+    .project-card {
+        /* display: none to hide all cards by default because we want to see one at a time */
+        display: none;
+        /* change absolute positioning to relative so it flows correctly in our doc */
+        position: relative !important;
+
+        /* don't need animations on mobile */
+        transform: none !important;
+
+        opacity: 1 !important;
+
+        /* want to make cards tappable */
+        pointer-events: auto !important;
+
+        /* want cards to be centered on mobile screens */
+        margin: 0 auto;
+    }
+
+    /* active card gets displayed on screen */
+    .project-card.active {
+        display: block;
+    }
+
+    .project-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .project-card p {
+        font-size: 0.85rem;
+        line-height: 1.3;
+        margin-bottom: 10px;
+    }
+
+    .project-card .tech-stack {
+        margin-bottom: 10px;
+    }
+
+    /* containter for nav buttons on mobile */
+    .card-nav {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 7vh;
+        margin-bottom: 7vh;
+    }
+
+    /* forward/back buttons */
+        .card-nav button {
+        font-size: 1.2rem;
+        font-family: 'Urbanist', sans-serif;
+        color: rgba(255, 255, 255, 0.85);
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 10px 18px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        letter-spacing: 2px;
+        box-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
+    }
+
+    .card-nav button:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+    }
+}
+
+/* hide nav buttons when screen is wider than 601 */
+@media (min-width: 601px) {
+    .card-nav {
+        display: none !important;
+    }
+}
+
+
 /********************************* ABOUT ME *********************************/
 
 .bun-bottom {
