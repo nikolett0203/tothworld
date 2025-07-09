@@ -558,6 +558,7 @@ canvas {
     .patty {
         display: flex;
         justify-content: space-between;
+        height: 90vh;
     }
 
     canvas, #sun, .instructions {
