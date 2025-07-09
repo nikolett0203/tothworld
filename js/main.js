@@ -158,3 +158,23 @@ window.addEventListener('DOMContentLoaded', () => {
     if (active_link) active_link.classList.add('active');
 
 });
+
+
+
+let mobile = window.innerWidth < 600;
+
+// watch for window resize
+window.addEventListener('resize', () => {
+    const now_mobile = window.innerWidth < 600;
+
+    // only run if the mode (mobile/desktop) has changed
+    if (now_mobile !== mobile) {
+        mobile = now_mobile;
+
+        if (mobile) {
+            heatDeath();         // mobile version
+        } else {
+            spawnNebula();       // desktop version
+        }
+    }
+});

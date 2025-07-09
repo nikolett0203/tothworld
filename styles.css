@@ -824,3 +824,29 @@ canvas {
     padding: 30px 20px;
     text-align: center;
 }
+
+/* hide boring version for big screens */
+.mobile-about {
+    display: none;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    margin: 40px auto 0;
+    max-width: 80vw;
+    line-height: 1.6;
+    padding: 0 20px;
+}
+
+/* boring paragraph for small screens */
+@media (max-width: 600px) {
+    .constellation-boundary,
+    .instructions {
+        display: none;
+    }
+
+    .mobile-about {
+        display: block;
+    }
+}
+
