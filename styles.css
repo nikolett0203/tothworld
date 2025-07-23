@@ -819,6 +819,13 @@ canvas {
     font-weight: 300;
 }
 
+.sometimes-u-gotta-popout .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
 /* custom width for playlist one */
 #dubhe .sometimes-u-gotta-popout {
     max-width: 440px;
