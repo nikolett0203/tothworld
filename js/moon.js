@@ -56,46 +56,50 @@ export function spawnMoon() {
             </svg>`
     }
 
-    // returns the time in millliseconds, but API needs seconds so divide by 1000
-    const today = Math.floor(Date.now() / 1000);
-    const endpoint = `https://api.farmsense.net/v1/moonphases/?d=${today}&callback=handleMoonPhases`
+    // use orozhaza coords for fun
+    const today = new Date().toISOString().split('T')[0];
+    const endpoint = `https://aa.usno.navy.mil/api/rstt/oneday?date=${today}&coords=46.56,20.66`
 
-    // because farmsense API is...old? idk why
-    // it doesn't allow CORS so we have to use JSONP (JSON with padding)
-    // in other words, instead of directly getting the JSON data, we're getting a function call from the API
-    // that contains the data as its arguments
-    // we can define that callback function in our own code then dynamically insert a <script> pointing
-    // to the API URL, so when the script loads, it immediately runs and passes the data to our function
-    const script = document.createElement('script');
-    script.src = endpoint;
-    document.body.appendChild(script)
+    // fetch is a built-in browser function that makes request to URL
+    // gives a Promise -- placeholder for a value that will exist when request is answered
+    fetch(endpoint)
+        // .then runs when the Promise resolves
+        // response is an object containing...
+        // ...response.ok, a bool that is true if HTTP status is 200-299
+        // ...response.status, the HTTP status code
+        // ...response.json(), a function that reads body of the response as JSON
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();     // another async function
+        })
+        // next .then runs after response.json() Promise finishes
+        // data is a normal JS object (no longer a promise)
+        .then(data => {
 
-    // add our callback function to the global namespace so it can be called by the API
-    window.handleMoonPhases = function(data) {
+            const phase = data.properties.data.curphase;
 
-        // ?. checks if data[0] exists before trying to access .Phase
-        const phase = data[0]?.Phase;
+            // find correct phase svg
+            const svg = moon_phases[phase] || moon_phases['Default'];           // default if unknown phase
 
-        // find correct phase svg
-        const svg = moon_phases[phase] || moon_phases['Default']
+            // update page with svg
+            const target = document.querySelector('#moon');
+            target.innerHTML = svg;
 
-        // update page with svg
-        const target = document.querySelector('#moon');
-        target.innerHTML = svg;
+            // create popup
+            const popup = document.createElement('div');
+            popup.className = 'popup';
+            popup.textContent = `Tonight's Lunar Phase: ${phase}`;
+            target.appendChild(popup);
 
-        // create popup
-        const popup = document.createElement('div');
-        popup.className = 'popup';
-        popup.textContent = `Tonight's Lunar Phase: ${phase}`;
-        target.appendChild(popup);
-
-        // add event listeners for hover
-        target.addEventListener('mouseenter', () => { popup.classList.add('show') });
-        target.addEventListener('mouseleave', () => { popup.classList.remove('show') });
-
-        // clean up the script after the call
-        script.remove();
-        delete window.handleMoonPhase;
-
-    };
+            // add event listeners for hover
+            target.addEventListener('mouseenter', () => { popup.classList.add('show') });
+            target.addEventListener('mouseleave', () => { popup.classList.remove('show') });
+        })
+        .catch(error => {
+            console.error("Could not fetch moon data:", error);
+            const target = document.querySelector('#moon');
+            target.innerHTML = moon_phases['Default'];
+        });
 }
