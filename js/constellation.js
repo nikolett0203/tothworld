@@ -3,12 +3,10 @@ export function spawnConstellation(){
 
     dipper.forEach(star => {
         const popup = star.querySelector('.sometimes-u-gotta-popout');
+        const starId = star.id;
 
-        star.addEventListener('click', function(e) {
-            console.log("click");
-
-            // want click to act only on the stars, not parent containers
-            e.stopPropagation();
+        // want popup to show on hover
+        star.addEventListener('mouseenter', () => {
 
             // close all popups first
             dipper.forEach(other => {
@@ -21,27 +19,9 @@ export function spawnConstellation(){
                 }
             });
 
-            // check if current star is already active
-            const isCurrentlyActive = star.classList.contains('active');
-
-            if (isCurrentlyActive) {
-                // if already active, close it
-                star.classList.remove('active');
-                if (popup) {
-                    popup.classList.remove('show');
-                }
-            } else {
-                // if not active, open it
-                star.classList.add('active');
-                if (popup) {
-
-                    const starId = star.id;
-                    
-                    // position very close to -- 25px below and 10px to the side
-
-                    
-                    // position left or right based on star ID
-                    if (starId === 'dubhe') {
+            star.classList.add('active');
+            if (popup) {
+                if (starId === 'dubhe') {
                         popup.style.left = `-450px`;
                         popup.style.top = `-180px`;
                     } else if (starId === 'merak' || starId === 'phecda' || starId === 'megrez') {
@@ -55,23 +35,24 @@ export function spawnConstellation(){
                         popup.style.top = `-140px`;
                         popup.style.transform = 'translateX(0)';
                     }
-                    
                     popup.classList.add('show');
-                }
             }
         });
-    });
-    
-    // close popup if clicking outside the stars
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.dipper') && !e.target.closest('.sometimes-u-gotta-popout')) {
-            dipper.forEach(star => {
-                star.classList.remove('active');
-                const popup = star.querySelector('.sometimes-u-gotta-popout');
-                if (popup) {
-                    popup.classList.remove('show');
-                }
+
+        // hide popup when not hovered
+        star.addEventListener('mouseleave', () => {
+            star.classList.remove('active');
+            if (popup) {
+                popup.classList.remove('show');
+            }
+        });
+
+        // click playlist star to visit spotify
+        if (starId === 'dubhe') {
+            star.addEventListener('click', () => {
+                window.open('https://open.spotify.com/playlist/2KTmAa0JYq8LA0EqP8dz21?si=3aa39383bea642d2&pt=219567988af86ecb08b5f3eac8658bbc', '_blank');
             });
         }
+
     });
 }
