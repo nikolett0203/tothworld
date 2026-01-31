@@ -16,7 +16,7 @@ const centerY = () => canvas.height / 2;
 let planets = [
     { rX: 160, rY: 90, speed: 0.006, angle: 1, size: 7, color: '#ffcc70', id: 1, hover: false, og_speed: 0.006, link: 'https://cran.r-project.org/web/packages/RulesTools/index.html' },
     { rX: 240, rY: 130, speed: 0.004, angle: 2, size: 10, color: '#98ff98', id: 2, hover: false, og_speed: 0.004, link: 'https://tune-twin-2-0.vercel.app/' },
-    { rX: 320, rY: 180, speed: 0.0025, angle: 3.2, size: 12, color: '#00ffe5', id: 3, hover: false, og_speed: 0.0025, link: 'https://www.google.com/' }
+    { rX: 320, rY: 180, speed: 0.0025, angle: 3.2, size: 12, color: '#00ffe5', id: 3, hover: false, og_speed: 0.0025, link: 'http://216.128.180.185/index.html' }
 ]
 
 // variables to store screen state
